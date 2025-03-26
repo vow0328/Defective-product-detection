@@ -2,7 +2,9 @@
   "name": "Defective product detection",
   "type": "ARM",
   "dependenceList": [],
-  "srcDirs": [],
+  "srcDirs": [
+    "../Applications"
+  ],
   "virtualFolder": {
     "name": "<virtual_root>",
     "files": [],
@@ -283,7 +285,9 @@
           "../Drivers/CMSIS/Device/ST/STM32F1xx/Include",
           "../Drivers/CMSIS/Include",
           ".cmsis/include",
-          "RTE/_Defective product detection"
+          "RTE/_Defective product detection",
+          "../Applications",
+          "../Applications/Inc"
         ],
         "libList": [],
         "defineList": [
