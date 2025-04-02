@@ -61,6 +61,8 @@ void Error_Handler(void);
 #define COM2IN_GPIO_Port GPIOC
 #define EN2IN_Pin GPIO_PIN_15
 #define EN2IN_GPIO_Port GPIOC
+#define STEP2_Pin GPIO_PIN_0
+#define STEP2_GPIO_Port GPIOA
 #define DIR2IN_Pin GPIO_PIN_1
 #define DIR2IN_GPIO_Port GPIOA
 #define TX2_Pin GPIO_PIN_2
@@ -69,6 +71,8 @@ void Error_Handler(void);
 #define RX2_GPIO_Port GPIOA
 #define DIR3IN_Pin GPIO_PIN_5
 #define DIR3IN_GPIO_Port GPIOA
+#define STEP3_Pin GPIO_PIN_6
+#define STEP3_GPIO_Port GPIOA
 #define EN3IN_Pin GPIO_PIN_7
 #define EN3IN_GPIO_Port GPIOA
 #define COM3IN_Pin GPIO_PIN_0
@@ -81,6 +85,8 @@ void Error_Handler(void);
 #define COM1IN_GPIO_Port GPIOB
 #define EN1IN_Pin GPIO_PIN_15
 #define EN1IN_GPIO_Port GPIOB
+#define STEP1_Pin GPIO_PIN_8
+#define STEP1_GPIO_Port GPIOA
 #define DIR1IN_Pin GPIO_PIN_9
 #define DIR1IN_GPIO_Port GPIOA
 #define OUT1_Pin GPIO_PIN_4

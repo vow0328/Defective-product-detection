@@ -2,7 +2,9 @@
   "name": "Defective product detection",
   "type": "ARM",
   "dependenceList": [],
-  "srcDirs": [],
+  "srcDirs": [
+    "../Applications"
+  ],
   "virtualFolder": {
     "name": "<virtual_root>",
     "files": [],
@@ -271,6 +273,23 @@
           "proType": 1,
           "speed": 8000,
           "otherCmds": ""
+        },
+        "STLink": {
+          "bin": "",
+          "proType": "SWD",
+          "resetMode": "default",
+          "runAfterProgram": true,
+          "speed": 4000,
+          "address": "0x8000000",
+          "elFile": "None",
+          "optionBytes": ".eide/defective product detection.st.option.bytes.ini",
+          "otherCmds": ""
+        },
+        "OpenOCD": {
+          "bin": "",
+          "target": "stm32f1x",
+          "interface": "stlink",
+          "baseAddr": "0x08000000"
         }
       },
       "custom_dep": {
@@ -283,7 +302,9 @@
           "../Drivers/CMSIS/Device/ST/STM32F1xx/Include",
           "../Drivers/CMSIS/Include",
           ".cmsis/include",
-          "RTE/_Defective product detection"
+          "RTE/_Defective product detection",
+          "../Applications",
+          "../Applications/Inc"
         ],
         "libList": [],
         "defineList": [
