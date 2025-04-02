@@ -218,21 +218,6 @@ void SetMotor3Speed(uint32_t pulseFrequency)
     __HAL_TIM_SET_COUNTER(&htim3, 0);
 }
 
-void TIM1_UP_IRQHandler(void)
-{
-    HAL_TIM_IRQHandler(&htim1);
-}
-
-void TIM2_IRQHandler(void)
-{
-    HAL_TIM_IRQHandler(&htim2);
-}
-
-void TIM3_IRQHandler(void)
-{
-    HAL_TIM_IRQHandler(&htim3);
-}
-
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
     if (htim->Instance == TIM1) // 判断中断是否来自于定时器1
