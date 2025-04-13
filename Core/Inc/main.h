@@ -81,6 +81,8 @@ void Error_Handler(void);
 #define TX3_GPIO_Port GPIOB
 #define RX3_Pin GPIO_PIN_11
 #define RX3_GPIO_Port GPIOB
+#define SPI_DO_Pin GPIO_PIN_13
+#define SPI_DO_GPIO_Port GPIOB
 #define COM1IN_Pin GPIO_PIN_14
 #define COM1IN_GPIO_Port GPIOB
 #define EN1IN_Pin GPIO_PIN_15
@@ -89,6 +91,12 @@ void Error_Handler(void);
 #define STEP1_GPIO_Port GPIOA
 #define DIR1IN_Pin GPIO_PIN_9
 #define DIR1IN_GPIO_Port GPIOA
+#define SPI_CS_Pin GPIO_PIN_10
+#define SPI_CS_GPIO_Port GPIOA
+#define SPI_CLK_Pin GPIO_PIN_11
+#define SPI_CLK_GPIO_Port GPIOA
+#define SPI_DI_Pin GPIO_PIN_12
+#define SPI_DI_GPIO_Port GPIOA
 #define OUT1_Pin GPIO_PIN_4
 #define OUT1_GPIO_Port GPIOB
 #define OUT2_Pin GPIO_PIN_5
