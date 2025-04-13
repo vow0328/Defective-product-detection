@@ -243,7 +243,7 @@
                 "startAddr": "0x0",
                 "size": "0x0"
               },
-              "isChecked": true,
+              "isChecked": false,
               "isStartup": false
             }
           ]
@@ -301,16 +301,13 @@
           "../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy",
           "../Drivers/CMSIS/Device/ST/STM32F1xx/Include",
           "../Drivers/CMSIS/Include",
-          ".cmsis/include",
-          "RTE/_Defective product detection",
           "../Applications",
-          "../Applications/Inc"
+          "RTE/_Defective product detection"
         ],
         "libList": [],
         "defineList": [
           "USE_HAL_DRIVER",
-          "STM32F103xB",
-          "STM32F10X_MD"
+          "STM32F103xB"
         ]
       },
       "builderOptions": {

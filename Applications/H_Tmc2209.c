@@ -2,7 +2,7 @@
 #include "gpio.h"
 #include "math.h"
 #include "H_Tmc2209.h"
-
+#include "main.h"
 uint8_t current_level=0,target_level=0;
 
 //档位0：40hz 24999 档位39：1600hz 624
@@ -27,7 +27,7 @@ void Motor2_Direction(GPIO_PinState dir) {
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-    if (htim == &htim5) {
+    if (htim == &htim3) {
         // 逐步逼近目标档位
         if (current_level < target_level) current_level++;
         else if (current_level > target_level) current_level--;
