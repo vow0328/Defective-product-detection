@@ -71,7 +71,6 @@ void MySPI_Init(void)
   /*设置默认电平*/
   MySPI_W_SS(1);  // SS默认高电平
   MySPI_W_SCK(0); // SCK默认低电平
-  led();
 }
 
 /*协议层*/
