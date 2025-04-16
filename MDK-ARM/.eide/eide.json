@@ -121,6 +121,54 @@
         ]
       },
       {
+        "name": "HardWare",
+        "files": [
+          {
+            "path": "../Applications/H_Tmc2209.c"
+          },
+          {
+            "path": "../Applications/H_Tmc2209.h"
+          },
+          {
+            "path": "../Applications/led.c"
+          },
+          {
+            "path": "../Applications/led.h"
+          },
+          {
+            "path": "../Applications/MySPI.c"
+          },
+          {
+            "path": "../Applications/MySPI.h"
+          },
+          {
+            "path": "../Applications/OLED.c"
+          },
+          {
+            "path": "../Applications/OLED.h"
+          },
+          {
+            "path": "../Applications/OLED_Font.h"
+          },
+          {
+            "path": "../Applications/Serial.c"
+          },
+          {
+            "path": "../Applications/Serial.h"
+          },
+          {
+            "path": "../Applications/W25Q64.c"
+          },
+          {
+            "path": "../Applications/W25Q64.h"
+          },
+          {
+            "path": "../Applications/W25Q64_Ins.h"
+          }
+        ],
+        "folders": []
+      },
+      {
         "name": "::CMSIS",
         "files": [],
         "folders": []

@@ -24,7 +24,10 @@ defective product detection\myspi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1
 defective product detection\myspi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
 defective product detection\myspi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 defective product detection\myspi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
+defective product detection\myspi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_iwdg.h
 defective product detection\myspi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 defective product detection\myspi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 defective product detection\myspi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 defective product detection\myspi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+defective product detection\myspi.o: ..\Applications\MySPI.h
+defective product detection\myspi.o: ..\Applications\led.h

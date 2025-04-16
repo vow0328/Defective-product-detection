@@ -6,8 +6,8 @@
     ],
     "settings": {
         "files.associations": {
-            "led.h": "c",
-            "myspi.h": "c"
+            "h_tmc2209.h": "c",
+            "stdarg.h": "c"
         }
     },
     "extensions": {}
