@@ -106,10 +106,9 @@ int main(void)
   OLED_Init();
   // W25Q64_Init();
   Serial_Init();
+  HAL_Delay(1000);
   Motor_Init();
-  HAL_TIM_Base_Start_IT(&htim1);//定时器启动
-  HAL_TIM_Base_Start_IT(&htim2);
-  HAL_TIM_Base_Start_IT(&htim3);
+  Motor1_SetSpeed(1,1,5);
   Scheduler_Setup(); // 调度器初始化，系统为裸奔，这里人工做了一个时分调度器
   /* USER CODE END 2 */
 

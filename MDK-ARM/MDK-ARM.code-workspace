@@ -17,7 +17,8 @@
             "stm32f1xx.h": "c",
             "scheduler.h": "c",
             "led.h": "c",
-            "w25q64.h": "c"
+            "w25q64.h": "c",
+            "tim.h": "c"
         }
     },
     "extensions": {}

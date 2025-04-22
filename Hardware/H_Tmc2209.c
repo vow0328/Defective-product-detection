@@ -57,7 +57,7 @@ void Motor3_SetSpeed(uint8_t en, GPIO_PinState dir, uint8_t level)
     level = (level > MAX_SPEED_LEVEL) ? MAX_SPEED_LEVEL : level; // 限幅
     target3_level = level;                                       // 更新目标等级
 }
-uint32_t Motor1_GetStep()
+uint32_t Motor1_GetStep()//细分步数为1是110个脉冲大概为180度
 { // 电机脉冲值获取
     return step1;
 }
@@ -112,6 +112,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     {
         // TIM1每个脉冲周期计数
         step1++;
+        if(Motor1_GetStep()>=108)Motor1_SetSpeed(0,1,39);
     }
     else if (htim == &htim2)
     {
