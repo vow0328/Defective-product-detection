@@ -21,6 +21,9 @@ void Motor_Init()
     HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
     HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
     HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+    HAL_TIM_Base_Start_IT(&htim1);
+    HAL_TIM_Base_Start_IT(&htim2);
+    HAL_TIM_Base_Start_IT(&htim3);
     HAL_TIM_Base_Start_IT(&htim4);
 }
 
@@ -53,6 +56,18 @@ void Motor3_SetSpeed(uint8_t en, GPIO_PinState dir, uint8_t level)
 
     level = (level > MAX_SPEED_LEVEL) ? MAX_SPEED_LEVEL : level; // 限幅
     target3_level = level;                                       // 更新目标等级
+}
+uint32_t Motor1_GetStep()
+{ // 电机脉冲值获取
+    return step1;
+}
+uint32_t Motor2_GetStep()
+{ // 电机脉冲值获取
+    return step2;
+}
+uint32_t Motor3_GetStep()
+{ // 电机脉冲值获取
+    return step3;
 }
 
 // 开启tim4定时中断用于调整arr与ccr
@@ -88,7 +103,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, new_arr1 / 2); // 50%占空比
 
         __HAL_TIM_SET_AUTORELOAD(&htim2, new_arr2);                 // 设置ARR
-        __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, new_arr2 / 2); // 50%占空比
+        __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, new_arr2 / 2); // 50%占空比
 
         __HAL_TIM_SET_AUTORELOAD(&htim3, new_arr3);                 // 设置ARR
         __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, new_arr3 / 2); // 50%占空比

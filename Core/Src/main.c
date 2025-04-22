@@ -31,6 +31,7 @@
 #include "OLED.h"
 #include "led.h"
 #include "serial.h"
+#include "Scheduler.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -106,25 +107,20 @@ int main(void)
   // W25Q64_Init();
   Serial_Init();
   Motor_Init();
-  HAL_TIM_Base_Start_IT(&htim1);
+  HAL_TIM_Base_Start_IT(&htim1);//定时器启动
   HAL_TIM_Base_Start_IT(&htim2);
   HAL_TIM_Base_Start_IT(&htim3);
+  Scheduler_Setup(); // 调度器初始化，系统为裸奔，这里人工做了一个时分调度器
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  //Motor1_SetSpeed(1,1,39);
   while (1)
   {
+    Scheduler_Run(); // 运行任务调度器，所有系统功能，除了中断服务函数，都在任务调度器内完成
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    OLED_ShowNum(1, 1, Serial2_RxPacket[0], 1);
-    for (int i = 1; i <= Serial2_RxPacket[0]; i++)
-    {
-      OLED_ShowNum(i + 1, 1, Serial2_RxPacket[i], 2);
-    }
-  
   }
   /* USER CODE END 3 */
 }
