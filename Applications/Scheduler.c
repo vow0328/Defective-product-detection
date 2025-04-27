@@ -1,4 +1,4 @@
-#include "Scheduler.h"
+#include "include.h"
 static void Loop_1000Hz(void) // 1ms执行一次
 {
     
@@ -21,7 +21,9 @@ static void Loop_100Hz(void) // 10ms执行一次
 
 static void Loop_50Hz(void) // 20ms执行一次
 {
-    
+    OLED_ShowNum(1,1,Serial2_RxPacket[1],2);
+    OLED_ShowNum(2,1,Serial2_RxPacket[2],2);
+    OLED_ShowNum(3,1,Serial2_RxPacket[3],2);
 }
 
 static void Loop_20Hz(void) // 50ms执行一次

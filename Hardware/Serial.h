@@ -3,8 +3,8 @@
 
 #include <stdio.h>
 
-extern uint8_t Serial3_RxPacket[10];
-extern uint8_t Serial2_RxPacket[10];
+extern volatile uint8_t Serial3_RxPacket[10];
+extern volatile uint8_t Serial2_RxPacket[10];
 void Serial_Init(void);
 void Serial3_SendByte(uint8_t Byte);
 void Serial3_SendArray(uint8_t *Array, uint16_t Length);

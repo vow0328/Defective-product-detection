@@ -1,12 +1,12 @@
-#include "main.h" // Device header
+#include "include.h"
 #include "usart.h"
 #include <stdio.h>
 #include <stdarg.h>
 
 uint8_t Serial3_RxData; // 定义串口接收的数据变量
-uint8_t Serial3_RxPacket[10];
+uint8_t volatile Serial3_RxPacket[10];
 uint8_t Serial2_RxData; // 定义串口接收的数据变量
-uint8_t Serial2_RxPacket[10];
+uint8_t volatile Serial2_RxPacket[10];
 
 /**
  * 函数：USART初始化函数
@@ -239,13 +239,12 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     {
       RxState = 1;
     }
-    // Serial3_RxPacket[0] = Serial3_RxData;
-    // Serial3_SendByte(Serial3_RxData);
     HAL_UART_Receive_IT(&huart3, &Serial3_RxData, 1); // 重新启动接收中断
   }
 
   if (huart->Instance == USART2) // 确保是USART3的中断
   {
+
     if (RxState == 1)
     {
       if (Serial2_RxData != 0xFE)
@@ -255,13 +254,14 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
       else if (Serial2_RxData == 0xFE)
       {
         RxState = 0;
+        pRxPacket = 0;
+        Motor1_SetSpeed(Serial2_RxPacket[1],Serial2_RxPacket[2],Serial2_RxPacket[3]);
       }
     }
     if (Serial2_RxData == 0xFF)
     {
       RxState = 1;
     }
-
     HAL_UART_Receive_IT(&huart2, &Serial2_RxData, 1); // 重新启动接收中断
   }
 }

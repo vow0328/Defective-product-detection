@@ -25,6 +25,9 @@ void Motor_Init()
     HAL_TIM_Base_Start_IT(&htim2);
     HAL_TIM_Base_Start_IT(&htim3);
     HAL_TIM_Base_Start_IT(&htim4);
+    __HAL_TIM_CLEAR_IT(&htim1,TIM_CHANNEL_1);	
+    __HAL_TIM_CLEAR_IT(&htim2,TIM_CHANNEL_1);	
+    __HAL_TIM_CLEAR_IT(&htim3,TIM_CHANNEL_1);	
 }
 
 void Motor1_SetSpeed(uint8_t en, GPIO_PinState dir, uint8_t level)
@@ -112,7 +115,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     {
         // TIM1每个脉冲周期计数
         step1++;
-        if(Motor1_GetStep()>=108)Motor1_SetSpeed(0,1,39);
     }
     else if (htim == &htim2)
     {

@@ -18,7 +18,11 @@
             "scheduler.h": "c",
             "led.h": "c",
             "w25q64.h": "c",
-            "tim.h": "c"
+            "tim.h": "c",
+            "usart.h": "c",
+            "oled.h": "c",
+            "serial.h": "c",
+            "gpio.h": "c"
         }
     },
     "extensions": {}
