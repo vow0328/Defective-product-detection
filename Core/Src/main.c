@@ -26,10 +26,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "H_Tmc2209.h"
-#include "MySPI.h"
-#include "W25Q64.h"
-#include "OLED.h"
-#include "led.h"
 #include "serial.h"
 /* USER CODE END Includes */
 
@@ -103,24 +99,20 @@ int main(void)
   MX_USART2_UART_Init();
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
-  OLED_Init();
-  //W25Q64_Init();
   Serial_Init();
   Motor_Init();
-  HAL_TIM_Base_Start_IT(&htim1);
-  HAL_TIM_Base_Start_IT(&htim2);
-  HAL_TIM_Base_Start_IT(&htim3);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  Motor1_SetSpeed(1,1,39);
+  HAL_Delay(100);
+  Scheduler_Setup();
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    //OLED_ShowNum(1,1,current1_level,3);
+    Scheduler_Run();
   }
   /* USER CODE END 3 */
 }
