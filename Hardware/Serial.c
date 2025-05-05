@@ -4,9 +4,11 @@
 #include <stdarg.h>
 
 uint8_t Serial3_RxData; // 定义串口接收的数据变量
-uint8_t volatile Serial3_RxPacket[10];
+uint8_t Serial3_RxPacket[10];
+uint8_t Serial3_RxFlag;
+
 uint8_t Serial2_RxData; // 定义串口接收的数据变量
-uint8_t volatile Serial2_RxPacket[10];
+uint8_t Serial2_RxPacket[10];
 
 /**
  * 函数：USART初始化函数
@@ -16,8 +18,8 @@ uint8_t volatile Serial2_RxPacket[10];
 void Serial_Init(void)
 {
   // 启用接收中断
-  HAL_UART_Receive_IT(&huart2, &Serial2_RxData, 1);
-  HAL_UART_Receive_IT(&huart3, &Serial3_RxData, 1);
+  HAL_UART_Receive_DMA(&huart2, &Serial2_RxData, 1);
+  HAL_UART_Receive_DMA(&huart3, &Serial3_RxData, 1);
 }
 
 /**
@@ -217,16 +219,21 @@ uint8_t Serial2_GetRxData(void)
  * 参 数：无
  * 返回 值：接收的数据，范围：0~255
  */
-uint16_t Serial2_GetRxPacket(uint32_t *buf, size_t n)
+uint16_t Serial3_GetRxPacket(uint16_t *buf, size_t n)
 {
-  if (Serial2_RxPacket[0] != 5)
+  if (Serial3_RxPacket[0] != 5)
     return 0;
   for (int i = 0; i < n - 1; i++)
   {
-    buf[i] = Serial2_RxPacket[i + 1];
+    buf[i] = Serial3_RxPacket[i + 1];
   }
-  buf[3] = (Serial2_RxPacket[4] << 8) | Serial2_RxPacket[5];
-  return 1;
+  buf[3] = (Serial3_RxPacket[4] << 8) | Serial3_RxPacket[5];
+  if (Serial3_RxFlag == 1)
+  {
+    Serial3_RxFlag = 0;
+    return 1;
+  }
+  return 0;
 }
 
 /**
@@ -249,18 +256,22 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
       }
       else if (Serial3_RxData == 0xFE)
       {
+        //Serial3_SendByte(0xaa);
+        Serial3_SendByte( Serial3_RxPacket[1]);
         RxState = 0;
+        pRxPacket = 0;
+        Serial3_RxFlag = 1;
       }
     }
     if (Serial3_RxData == 0xFF)
     {
       RxState = 1;
     }
-    HAL_UART_Receive_IT(&huart3, &Serial3_RxData, 1); // 重新启动接收中断
+    HAL_UART_Receive_DMA(&huart3, &Serial3_RxData, 1); // 重新启动接收中断
   }
 
-  if (huart->Instance == USART2) // 确保是USART3的中断
+  if (huart->Instance == USART2) // 确保是USART2的中断
   {
-    // 串口三留给串口屏
+    // 串口留给串口屏
   }
 }

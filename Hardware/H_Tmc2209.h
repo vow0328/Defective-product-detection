@@ -29,19 +29,17 @@
 // 加速度/减速度：单位 Hz/ms （每 1ms SysTick 增/减多少 Hz）
 #define ACCEL_HZ_PER_MS 1000U
 // 定时器输入时钟：72 MHz，预分频 7200 → 定时器计数频率 = 10 kHz
-#define TIMER_CLK_HZ 72000000U
-#define TIMER_PSC 7200U
-#define TIMER_TICK_HZ (TIMER_CLK_HZ / TIMER_PSC) // 10000 Hz
-#define MIN(a, b) (((a) < (b)) ? (a) : (b))
+#define TIMER_CLK_HZ 720000U
+
 
 void Motor_Init(void);
 
-//void Motor_SetSpeed(uint8_t num, uint8_t mode, GPIO_PinState dir, uint32_t hz);
-void Motor1_SetSpeed(uint8_t en, GPIO_PinState dir, uint32_t level);
-void Motor2_SetSpeed(uint8_t en, GPIO_PinState dir, uint32_t level);
-void Motor3_SetSpeed(uint8_t en, GPIO_PinState dir, uint32_t level);
+void Motor_SetSpeed(uint8_t num, uint8_t mode, GPIO_PinState dir, uint16_t hz);
+void Motor1_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t level);
+void Motor2_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t level);
+void Motor3_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t level);
 
-uint32_t Motor1_GetStep();
-uint32_t Motor2_GetStep();
-uint32_t Motor3_GetStep();
+uint16_t Motor1_GetStep();
+uint16_t Motor2_GetStep();
+uint16_t Motor3_GetStep();
 #endif

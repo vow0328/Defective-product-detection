@@ -25,8 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "H_Tmc2209.h"
-#include "serial.h"
+#include "include.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -107,6 +106,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   HAL_Delay(100);
   Scheduler_Setup();
+  Motor1_SetSpeed(1,1,624);
+  Motor2_SetSpeed(1,1,624);
+  Motor3_SetSpeed(1,1,624);
   while (1)
   {
     /* USER CODE END WHILE */

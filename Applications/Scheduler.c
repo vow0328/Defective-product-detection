@@ -6,27 +6,27 @@ static void Loop_1000Hz(void) // 1ms执行一次
 
 static void Loop_500Hz(void) // 2ms执行一次
 {
-    
+
 }
 
 static void Loop_200Hz(void) // 5ms执行一次
 {
-   
+
 }
 
 static void Loop_100Hz(void) // 10ms执行一次
 {
-   Control();
+    //Control();
 }
 
 static void Loop_50Hz(void) // 20ms执行一次
 {
-    
+
 }
 
 static void Loop_20Hz(void) // 50ms执行一次
 {
-    
+
 }
 
 static void Loop_2Hz(void) // 500ms执行一次
@@ -51,11 +51,13 @@ void Scheduler_Setup(void)
 {
     uint8_t index = 0;
     // 初始化任务表
-    for (index = 0; index < TASK_NUM; index++) {
+    for (index = 0; index < TASK_NUM; index++)
+    {
         // 计算每个任务的延时周期数
         sched_tasks[index].interval_ticks = TICK_PER_SECOND / sched_tasks[index].rate_hz;
         // 最短周期为1，也就是1ms
-        if (sched_tasks[index].interval_ticks < 1) {
+        if (sched_tasks[index].interval_ticks < 1)
+        {
             sched_tasks[index].interval_ticks = 1;
         }
     }
@@ -66,11 +68,13 @@ void Scheduler_Run(void)
     uint8_t index = 0;
     // 循环判断所有线程，是否应该执行
 
-    for (index = 0; index < TASK_NUM; index++) {
+    for (index = 0; index < TASK_NUM; index++)
+    {
         // 获取系统当前时间，单位MS
         uint32_t tnow = HAL_GetTick();
         // 进行判断，如果当前时间减去上一次执行的时间，大于等于该线程的执行周期，则执行线程
-        if (tnow - sched_tasks[index].last_run >= sched_tasks[index].interval_ticks) {
+        if (tnow - sched_tasks[index].last_run >= sched_tasks[index].interval_ticks)
+        {
 
             // 更新线程的执行时间，用于下一次判断
             sched_tasks[index].last_run = tnow;
