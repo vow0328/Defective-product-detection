@@ -256,8 +256,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
       }
       else if (Serial3_RxData == 0xFE)
       {
-        //Serial3_SendByte(0xaa);
-        Serial3_SendByte( Serial3_RxPacket[1]);
+        Serial3_SendByte(0xaa);
         RxState = 0;
         pRxPacket = 0;
         Serial3_RxFlag = 1;

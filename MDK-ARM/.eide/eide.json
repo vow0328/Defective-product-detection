@@ -120,6 +120,44 @@
             "folders": []
           }
         ]
+      },
+      {
+        "name": "New Group",
+        "files": [
+          {
+            "path": "../Applications/control.c"
+          },
+          {
+            "path": "../Applications/control.h"
+          },
+          {
+            "path": "../Applications/include.h"
+          },
+          {
+            "path": "../Applications/Scheduler.c"
+          },
+          {
+            "path": "../Applications/Scheduler.h"
+          },
+          {
+            "path": "../Hardware/H_Tmc2209.c"
+          },
+          {
+            "path": "../Hardware/H_Tmc2209.h"
+          },
+          {
+            "path": "../Hardware/Serial.c"
+          },
+          {
+            "path": "../Hardware/Serial.h"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "::CMSIS",
+        "files": [],
+        "folders": []
       }
     ]
   },
@@ -334,10 +372,7 @@
       }
     },
     "Motion control card": {
-      "excludeList": [
-        "../Hardware/OLED.c",
-        "../Hardware/MySPI.c"
-      ],
+      "excludeList": [],
       "toolchain": "AC5",
       "compileConfig": {
         "cpuType": "Cortex-M3",
@@ -347,37 +382,122 @@
         "storageLayout": {
           "RAM": [
             {
+              "tag": "RAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "RAM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
+              "tag": "RAM",
+              "id": 3,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "noInit": false
+            },
+            {
               "tag": "IRAM",
               "id": 1,
               "mem": {
                 "startAddr": "0x20000000",
-                "size": "0x00005000"
+                "size": "0xc000"
               },
               "isChecked": true,
+              "noInit": false
+            },
+            {
+              "tag": "IRAM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
               "noInit": false
             }
           ],
           "ROM": [
             {
+              "tag": "ROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "ROM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
+              "tag": "ROM",
+              "id": 3,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
+            },
+            {
               "tag": "IROM",
               "id": 1,
               "mem": {
-                "startAddr": "0x08000000",
-                "size": "0x00010000"
+                "startAddr": "0x8000000",
+                "size": "0x40000"
               },
               "isChecked": true,
               "isStartup": true
+            },
+            {
+              "tag": "IROM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x0",
+                "size": "0x0"
+              },
+              "isChecked": false,
+              "isStartup": false
             }
           ]
         },
         "options": "null"
       },
-      "uploader": "OpenOCD",
+      "uploader": "STLink",
       "uploadConfig": {
         "bin": "",
-        "target": "stm32f1x",
-        "interface": "cmsis-dap",
-        "baseAddr": "0x08000000"
+        "proType": "SWD",
+        "resetMode": "default",
+        "runAfterProgram": true,
+        "speed": 4000,
+        "address": "0x8000000",
+        "elFile": "None",
+        "optionBytes": ".eide/motion control card.st.option.bytes.ini",
+        "otherCmds": ""
       },
       "uploadConfigMap": {
         "JLink": {
@@ -418,9 +538,9 @@
           "../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy",
           "../Drivers/CMSIS/Device/ST/STM32F1xx/Include",
           "../Drivers/CMSIS/Include",
-          "RTE/_Motion control card",
           "../Applications",
-          "../Hardware"
+          "../Hardware",
+          "RTE/_Motion control card"
         ],
         "libList": [],
         "defineList": [

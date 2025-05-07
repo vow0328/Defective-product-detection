@@ -1,37 +1,31 @@
 #include "include.h"
 static void Loop_1000Hz(void) // 1ms执行一次
 {
-    
 }
 
 static void Loop_500Hz(void) // 2ms执行一次
 {
-
 }
 
 static void Loop_200Hz(void) // 5ms执行一次
 {
-
 }
 
 static void Loop_100Hz(void) // 10ms执行一次
 {
-    //Control();
+    Control();
 }
 
 static void Loop_50Hz(void) // 20ms执行一次
 {
-
 }
 
 static void Loop_20Hz(void) // 50ms执行一次
 {
-
 }
 
 static void Loop_2Hz(void) // 500ms执行一次
 {
-   
 }
 // 系统任务配置，创建不同执行频率的“线程”
 static sched_task_t sched_tasks[] =

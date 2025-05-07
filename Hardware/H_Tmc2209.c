@@ -32,7 +32,7 @@ void Motor_Init()
 void Motor_SetSpeed(uint8_t num, uint8_t mode, GPIO_PinState dir, uint16_t hz) // 模式1定速 模式2定步
 {
     int target_step = (mode == 1) ? 0 : hz; // 模式一不限步数,模式二步数为输入脉冲数
-    hz = (mode == 1) ? hz : 624;            // 模式一速度为输入速度,模式二固定速度
+    hz = (mode == 1) ? hz : 10;            // 模式一速度为输入速度,模式二固定速度
     switch (num)
     {
     case 1:
@@ -124,13 +124,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         {
             uint16_t arr1 = TIMER_CLK_HZ / current1_hz;
             __HAL_TIM_SET_AUTORELOAD(&htim2, arr1);
-            __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, arr1 / 2);
+            __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, arr1 / 2);
         }
         if (current2_hz)
         {
             uint16_t arr2 = TIMER_CLK_HZ / current2_hz;
             __HAL_TIM_SET_AUTORELOAD(&htim8, arr2);
-            __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, arr2 / 2);
+            __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, arr2 / 2);
         }
         if (current3_hz)
         {

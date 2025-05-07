@@ -1453,7 +1453,7 @@ HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData
 
     /* Set Reception type to Standard reception */
     huart->ReceptionType = HAL_UART_RECEPTION_STANDARD;
-    
+
     return (UART_Start_Receive_DMA(huart, pData, Size));
   }
   else

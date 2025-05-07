@@ -33,8 +33,8 @@ motion control card\scheduler.o: ../Core/Inc/dma.h
 motion control card\scheduler.o: ../Core/Inc/tim.h
 motion control card\scheduler.o: ../Core/Inc/usart.h
 motion control card\scheduler.o: ../Core/Inc/gpio.h
-motion control card\scheduler.o: ..\Hardware\H_Tmc2209.h
-motion control card\scheduler.o: ..\Hardware\serial.h
+motion control card\scheduler.o: ../Hardware/H_Tmc2209.h
+motion control card\scheduler.o: ../Hardware/serial.h
 motion control card\scheduler.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 motion control card\scheduler.o: ..\Applications\Scheduler.h
 motion control card\scheduler.o: ..\Applications\control.h

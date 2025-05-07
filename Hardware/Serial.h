@@ -11,7 +11,6 @@ void Serial3_SendNumber(uint32_t Number, uint8_t Length);
 uint8_t Serial3_GetRxData(void);
 void Serial3_Printf(char *format, ...);
 uint16_t Serial3_GetRxPacket(uint16_t *buf, size_t n);
-uint8_t Serial3_GetRxFlag(void);
 
 void Serial2_SendByte(uint8_t Byte);
 void Serial2_SendArray(uint8_t *Array, uint16_t Length);

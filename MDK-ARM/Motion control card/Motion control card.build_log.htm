@@ -17,103 +17,17 @@ Library Manager: ArmAr.exe V5.06 update 5 (build 528)
 Hex Converter:   FromElf.exe V5.06 update 5 (build 528)
 CPU DLL:         SARMCM3.DLL V5.24.1
 Dialog DLL:      DCM.DLL V1.16.0.0
-Target DLL:      CMSIS_AGDI.dll V1.28.3.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.1.0
 Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
 D:\project\stm32\Motion control card\MDK-ARM\Motion control card.uvprojx
-Project File Date:  05/05/2025
+Project File Date:  05/06/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Motion control card'
-compiling gpio.c...
-compiling stm32f1xx_hal_gpio.c...
-compiling main.c...
-..\Hardware\H_Tmc2209.h(42): warning:  #1295-D: Deprecated declaration Motor1_GetStep - give arg types
-  uint32_t Motor1_GetStep();
-..\Hardware\H_Tmc2209.h(43): warning:  #1295-D: Deprecated declaration Motor2_GetStep - give arg types
-  uint32_t Motor2_GetStep();
-..\Hardware\H_Tmc2209.h(44): warning:  #1295-D: Deprecated declaration Motor3_GetStep - give arg types
-  uint32_t Motor3_GetStep();
-..\Hardware\H_Tmc2209.h(45): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Core/Src/main.c: 4 warnings, 0 errors
-compiling stm32f1xx_hal_cortex.c...
-compiling stm32f1xx_it.c...
-compiling usart.c...
-compiling dma.c...
-compiling stm32f1xx_hal.c...
-compiling stm32f1xx_hal_msp.c...
-compiling stm32f1xx_hal_gpio_ex.c...
-compiling stm32f1xx_hal_dma.c...
-compiling stm32f1xx_hal_tim_ex.c...
-compiling stm32f1xx_hal_rcc_ex.c...
-compiling tim.c...
-compiling stm32f1xx_hal_rcc.c...
-compiling stm32f1xx_hal_tim.c...
-compiling stm32f1xx_hal_exti.c...
-compiling stm32f1xx_hal_flash.c...
-compiling stm32f1xx_hal_flash_ex.c...
-compiling system_stm32f1xx.c...
-compiling H_Tmc2209.c...
-..\Hardware\H_Tmc2209.h(42): warning:  #1295-D: Deprecated declaration Motor1_GetStep - give arg types
-  uint32_t Motor1_GetStep();
-..\Hardware\H_Tmc2209.h(43): warning:  #1295-D: Deprecated declaration Motor2_GetStep - give arg types
-  uint32_t Motor2_GetStep();
-..\Hardware\H_Tmc2209.h(44): warning:  #1295-D: Deprecated declaration Motor3_GetStep - give arg types
-  uint32_t Motor3_GetStep();
-..\Hardware\H_Tmc2209.h(45): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Hardware\H_Tmc2209.c(155): warning:  #188-D: enumerated type mixed with another type
-              Motor1_SetSpeed(0, 1, 0);
-..\Hardware\H_Tmc2209.c(165): warning:  #188-D: enumerated type mixed with another type
-              Motor2_SetSpeed(0, 1, 0);
-..\Hardware\H_Tmc2209.c(175): warning:  #188-D: enumerated type mixed with another type
-              Motor3_SetSpeed(0, 1, 0);
-..\Hardware\H_Tmc2209.c: 7 warnings, 0 errors
-compiling stm32f1xx_hal_pwr.c...
-compiling Scheduler.c...
-..\Hardware\H_Tmc2209.h(42): warning:  #1295-D: Deprecated declaration Motor1_GetStep - give arg types
-  uint32_t Motor1_GetStep();
-..\Hardware\H_Tmc2209.h(43): warning:  #1295-D: Deprecated declaration Motor2_GetStep - give arg types
-  uint32_t Motor2_GetStep();
-..\Hardware\H_Tmc2209.h(44): warning:  #1295-D: Deprecated declaration Motor3_GetStep - give arg types
-  uint32_t Motor3_GetStep();
-..\Hardware\H_Tmc2209.h(45): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Applications\Scheduler.c: 4 warnings, 0 errors
-compiling control.c...
-..\Hardware\H_Tmc2209.h(42): warning:  #1295-D: Deprecated declaration Motor1_GetStep - give arg types
-  uint32_t Motor1_GetStep();
-..\Hardware\H_Tmc2209.h(43): warning:  #1295-D: Deprecated declaration Motor2_GetStep - give arg types
-  uint32_t Motor2_GetStep();
-..\Hardware\H_Tmc2209.h(44): warning:  #1295-D: Deprecated declaration Motor3_GetStep - give arg types
-  uint32_t Motor3_GetStep();
-..\Hardware\H_Tmc2209.h(45): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Applications\control.c(14): warning:  #188-D: enumerated type mixed with another type
-      Motor_SetSpeed(Motor, motion, dir, pulses);
-..\Applications\control.c: 5 warnings, 0 errors
-compiling Serial.c...
-..\Hardware\H_Tmc2209.h(42): warning:  #1295-D: Deprecated declaration Motor1_GetStep - give arg types
-  uint32_t Motor1_GetStep();
-..\Hardware\H_Tmc2209.h(43): warning:  #1295-D: Deprecated declaration Motor2_GetStep - give arg types
-  uint32_t Motor2_GetStep();
-..\Hardware\H_Tmc2209.h(44): warning:  #1295-D: Deprecated declaration Motor3_GetStep - give arg types
-  uint32_t Motor3_GetStep();
-..\Hardware\H_Tmc2209.h(45): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Hardware\Serial.c(51): warning:  #223-D: function "strlen" declared implicitly
-    HAL_UART_Transmit_DMA(&huart3, (uint8_t *)String, strlen(String)); // 使用HAL库发送字符串
-..\Hardware\Serial.c(148): warning:  #223-D: function "strlen" declared implicitly
-    HAL_UART_Transmit_DMA(&huart2, (uint8_t *)String, strlen(String)); // 使用HAL库发送字符串
-..\Hardware\Serial.c: 6 warnings, 0 errors
-compiling stm32f1xx_hal_uart.c...
-linking...
-Program Size: Code=11058 RO-data=378 RW-data=160 ZI-data=2440  
-FromELF: creating hex file...
-"Motion control card\Motion control card.axf" - 0 Error(s), 26 Warning(s).
+"Motion control card\Motion control card.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -136,7 +50,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:06
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

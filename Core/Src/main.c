@@ -106,15 +106,13 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   HAL_Delay(100);
   Scheduler_Setup();
-  Motor1_SetSpeed(1,1,624);
-  Motor2_SetSpeed(1,1,624);
-  Motor3_SetSpeed(1,1,624);
+  //Motor_SetSpeed(3, 2, 1, 2000);
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    Scheduler_Run();
+     Scheduler_Run();
   }
   /* USER CODE END 3 */
 }
