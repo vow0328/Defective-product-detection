@@ -122,39 +122,6 @@
         ]
       },
       {
-        "name": "New Group",
-        "files": [
-          {
-            "path": "../Applications/control.c"
-          },
-          {
-            "path": "../Applications/control.h"
-          },
-          {
-            "path": "../Applications/include.h"
-          },
-          {
-            "path": "../Applications/Scheduler.c"
-          },
-          {
-            "path": "../Applications/Scheduler.h"
-          },
-          {
-            "path": "../Hardware/H_Tmc2209.c"
-          },
-          {
-            "path": "../Hardware/H_Tmc2209.h"
-          },
-          {
-            "path": "../Hardware/Serial.c"
-          },
-          {
-            "path": "../Hardware/Serial.h"
-          }
-        ],
-        "folders": []
-      },
-      {
         "name": "::CMSIS",
         "files": [],
         "folders": []
@@ -162,7 +129,7 @@
     ]
   },
   "outDir": "build",
-  "deviceName": "STM32F103C8",
+  "deviceName": "STM32F103RC",
   "packDir": ".pack/Keil/STM32F1xx_DFP.2.3.0",
   "miscInfo": {
     "uid": "2f7dd91181dd0b968758a4b987734475"
@@ -372,7 +339,9 @@
       }
     },
     "Motion control card": {
-      "excludeList": [],
+      "excludeList": [
+        "<virtual_root>/New Group"
+      ],
       "toolchain": "AC5",
       "compileConfig": {
         "cpuType": "Cortex-M3",
@@ -487,17 +456,12 @@
         },
         "options": "null"
       },
-      "uploader": "STLink",
+      "uploader": "OpenOCD",
       "uploadConfig": {
         "bin": "",
-        "proType": "SWD",
-        "resetMode": "default",
-        "runAfterProgram": true,
-        "speed": 4000,
-        "address": "0x8000000",
-        "elFile": "None",
-        "optionBytes": ".eide/motion control card.st.option.bytes.ini",
-        "otherCmds": ""
+        "target": "stm32f1x",
+        "interface": "cmsis-dap",
+        "baseAddr": "0x08000000"
       },
       "uploadConfigMap": {
         "JLink": {
@@ -517,7 +481,7 @@
           "resetMode": "default",
           "runAfterProgram": true,
           "speed": 4000,
-          "address": "0x08000000",
+          "address": "0x8000000",
           "elFile": "None",
           "optionBytes": ".eide/motion control card.st.option.bytes.ini",
           "otherCmds": ""
@@ -539,13 +503,15 @@
           "../Drivers/CMSIS/Device/ST/STM32F1xx/Include",
           "../Drivers/CMSIS/Include",
           "../Applications",
+          "RTE/_Motion control card",
           "../Hardware",
-          "RTE/_Motion control card"
+          ".."
         ],
         "libList": [],
         "defineList": [
           "USE_HAL_DRIVER",
-          "STM32F103xE"
+          "STM32F103xE",
+          "STM32F10X_HD"
         ]
       },
       "builderOptions": {

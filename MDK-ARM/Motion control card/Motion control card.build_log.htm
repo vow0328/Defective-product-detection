@@ -17,17 +17,41 @@ Library Manager: ArmAr.exe V5.06 update 5 (build 528)
 Hex Converter:   FromElf.exe V5.06 update 5 (build 528)
 CPU DLL:         SARMCM3.DLL V5.24.1
 Dialog DLL:      DCM.DLL V1.16.0.0
-Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.1.0
+Target DLL:      CMSIS_AGDI.dll V1.28.3.0
 Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
 D:\project\stm32\Motion control card\MDK-ARM\Motion control card.uvprojx
-Project File Date:  05/06/2025
+Project File Date:  05/11/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Motion control card'
-"Motion control card\Motion control card.axf" - 0 Error(s), 0 Warning(s).
+compiling main.c...
+../Hardware/H_Tmc2209.h(42): warning:  #1295-D: Deprecated declaration Motor1_GetStep - give arg types
+  uint16_t Motor1_GetStep();
+../Hardware/H_Tmc2209.h(43): warning:  #1295-D: Deprecated declaration Motor2_GetStep - give arg types
+  uint16_t Motor2_GetStep();
+../Hardware/H_Tmc2209.h(44): warning:  #1295-D: Deprecated declaration Motor3_GetStep - give arg types
+  uint16_t Motor3_GetStep();
+../Hardware/H_Tmc2209.h(45): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Applications/control.h(6): warning:  #1-D: last line of file ends without a newline
+  #endif /* __CONTROL_H */
+../Applications/include.h(12): warning:  #1-D: last line of file ends without a newline
+  #include "led.h"
+../Hardware/led.h(6): warning:  #1-D: last line of file ends without a newline
+  #endif // !_LED_H
+../Core/Src/main.c: 7 warnings, 0 errors
+linking...
+Motion control card\Motion control card.axf: Error: L6218E: Undefined symbol Motor_Init (referred from main.o).
+Motion control card\Motion control card.axf: Error: L6218E: Undefined symbol Scheduler_Run (referred from main.o).
+Motion control card\Motion control card.axf: Error: L6218E: Undefined symbol Scheduler_Setup (referred from main.o).
+Motion control card\Motion control card.axf: Error: L6218E: Undefined symbol Serial_Init (referred from main.o).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 4 error messages.
+"Motion control card\Motion control card.axf" - 4 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -50,7 +74,8 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:00
+Target not created.
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>

@@ -116,7 +116,12 @@ void Serial3_Printf(char *format, ...)
  */
 uint8_t Serial3_GetRxData(void)
 {
-  return Serial3_RxData; // 返回接收的数据变量
+  if (Serial3_RxFlag == 1)
+  {
+    Serial3_RxFlag = 0;
+    return Serial3_RxPacket[0]; // 返回接收的数据变量
+  }
+  return 0;
 }
 
 /**
@@ -219,21 +224,12 @@ uint8_t Serial2_GetRxData(void)
  * 参 数：无
  * 返回 值：接收的数据，范围：0~255
  */
-uint16_t Serial3_GetRxPacket(uint16_t *buf, size_t n)
+void Serial3_GetRxPacket(uint8_t *buf, size_t n)
 {
-  if (Serial3_RxPacket[0] != 5)
-    return 0;
-  for (int i = 0; i < n - 1; i++)
+  for (int i = 0; i < n; i++)
   {
     buf[i] = Serial3_RxPacket[i + 1];
   }
-  buf[3] = (Serial3_RxPacket[4] << 8) | Serial3_RxPacket[5];
-  if (Serial3_RxFlag == 1)
-  {
-    Serial3_RxFlag = 0;
-    return 1;
-  }
-  return 0;
 }
 
 /**
@@ -256,7 +252,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
       }
       else if (Serial3_RxData == 0xFE)
       {
-        Serial3_SendByte(0xaa);
+        //Serial3_SendByte(0xaa);
         RxState = 0;
         pRxPacket = 0;
         Serial3_RxFlag = 1;

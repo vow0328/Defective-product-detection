@@ -22,6 +22,7 @@ static void Loop_50Hz(void) // 20ms执行一次
 
 static void Loop_20Hz(void) // 50ms执行一次
 {
+    //send_Photo_sensor();
 }
 
 static void Loop_2Hz(void) // 500ms执行一次

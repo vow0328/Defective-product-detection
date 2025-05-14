@@ -4,6 +4,34 @@
             "path": "."
         }
     ],
-    "settings": {},
-    "extensions": {}
+    "settings": {
+        "files.associations": {
+            "include.h": "c",
+            "photo_sensitive.h": "c",
+            "main.h": "c",
+            "stm32f1xx_hal.h": "c",
+            "led.h": "c",
+            "h_tmc2209.h": "c",
+            "gpio.h": "c"
+        }
+    },
+    "extensions": {},
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "cwd": "${workspaceRoot}",
+                "executable": "./bin/executable.elf",
+                "name": "Debug with OpenOCD",
+                "request": "launch",
+                "type": "cortex-debug",
+                "servertype": "openocd",
+                "configFiles": [],
+                "searchDir": [],
+                "runToEntryPoint": "main",
+                "showDevDebugOutput": "none"
+            }
+
+        ]
+    }
 }

@@ -1,7 +1,7 @@
-#include "tim.h"
-#include "gpio.h"
-#include "math.h"
-#include "H_Tmc2209.h"
+#include "include.h"
+
+//  电机模式
+uint8_t motor1_mode = 0, motor2_mode = 0, motor3_mode = 0;
 
 // 直接以脉冲频率（Hz）控制
 uint16_t current1_hz = 0, target1_hz = 0;
@@ -29,23 +29,46 @@ void Motor_Init()
     __HAL_TIM_CLEAR_IT(&htim8, TIM_CHANNEL_1);
 }
 
-void Motor_SetSpeed(uint8_t num, uint8_t mode, GPIO_PinState dir, uint16_t hz) // 模式1定速 模式2定步
+void Motor_SetSpeed(uint8_t num, uint8_t mode, GPIO_PinState dir, uint16_t hz) // 模式1定速 模式2定步 模式3停止
 {
-    int target_step = (mode == 1) ? 0 : hz; // 模式一不限步数,模式二步数为输入脉冲数
-    hz = (mode == 1) ? hz : 10;            // 模式一速度为输入速度,模式二固定速度
+    uint8_t motor_mode = 0, en = 1;
+    uint16_t target_step = 0;
+    switch (mode)
+    {
+    case Constant_speed:
+        motor_mode = Constant_speed;
+        break;
+    case Constant_step:
+        motor_mode = Constant_step;
+        target_step = hz; // 模式一不限步数,模式二步数为输入脉冲数;
+        hz = 200;         // 模式一速度为输入速度,模式二固定速度 200为一秒一圈
+        break;
+    case STOP_mode:
+        motor_mode = STOP_mode;
+        en = 0;
+        break;
+    default:
+        break;
+    }
     switch (num)
     {
     case 1:
-        Motor1_SetSpeed(ENABLE, dir, hz);
-        target1_step = (target_step) ? target_step : 0;
+        motor1_mode = motor_mode;
+        target1_step = (motor1_mode == Constant_step) ? target_step : 0;
+        current1_step = 0;
+        Motor1_SetSpeed(en, dir, hz);
         break;
     case 2:
-        Motor2_SetSpeed(ENABLE, dir, hz);
-        target2_step = (target_step) ? target_step : 0;
+        motor2_mode = motor_mode;
+        target2_step = (motor2_mode == Constant_step) ? target_step : 0;
+        current2_step = 0;
+        Motor2_SetSpeed(en, dir, hz);
         break;
     case 3:
-        Motor3_SetSpeed(ENABLE, dir, hz);
-        target3_step = (target_step) ? target_step : 0;
+        motor3_mode = motor_mode;
+        target3_step = (motor3_mode == Constant_step) ? target_step : 0;
+        current3_step = 0;
+        Motor3_SetSpeed(en, dir, hz);
         break;
     default:
         break;
@@ -80,7 +103,7 @@ void Motor3_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t hz)
     target3_hz = hz; // 更新目标等级
 }
 
-uint16_t Motor1_GetStep() // 细分步数为1是110个脉冲大概为180度
+uint16_t Motor1_GetStep() // 细分步数为1  脉冲大概为180度
 {                         // 电机脉冲值获取
     return current1_step;
 }
@@ -122,54 +145,60 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         // 计算 ARR 和 CCR
         if (current1_hz)
         {
-            uint16_t arr1 = TIMER_CLK_HZ / current1_hz;
+            uint16_t arr1 = (TIMER_CLK_HZ / current1_hz) - 1;
             __HAL_TIM_SET_AUTORELOAD(&htim2, arr1);
             __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, arr1 / 2);
         }
         if (current2_hz)
         {
-            uint16_t arr2 = TIMER_CLK_HZ / current2_hz;
+            uint16_t arr2 = (TIMER_CLK_HZ / current2_hz) - 1;
             __HAL_TIM_SET_AUTORELOAD(&htim8, arr2);
             __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, arr2 / 2);
         }
         if (current3_hz)
         {
-            uint16_t arr3 = TIMER_CLK_HZ / current3_hz;
+            uint16_t arr3 = (TIMER_CLK_HZ / current3_hz) - 1;
             __HAL_TIM_SET_AUTORELOAD(&htim1, arr3);
             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, arr3 / 2);
         }
     }
     else if (htim == &htim2)
     {
-        if (target1_step)
-            current1_step++;
-        if (current1_step >= target1_step && target1_step)
+        if (motor1_mode == Constant_step && target1_step)
         {
-            current1_step = 0;
-            target1_step = 0;
-            Motor1_SetSpeed(0, 0, 0);
+            current1_step++;
+            if (current1_step >= target1_step)
+            {
+                current1_step = 0;
+                target1_step = 0;
+                Motor1_SetSpeed(0, 0, 0);
+            }
         }
     }
     else if (htim == &htim8)
     {
-        if (target2_step)
-            current2_step++;
-        if (current2_step >= target2_step && target2_step)
+        if (motor2_mode == Constant_step && target2_step)
         {
-            current2_step = 0;
-            target2_step = 0;
-            Motor2_SetSpeed(0, 0, 0);
+            current2_step++;
+            if (current2_step >= target2_step)
+            {
+                current2_step = 0;
+                target2_step = 0;
+                Motor2_SetSpeed(0, 0, 0);
+            }
         }
     }
     else if (htim == &htim1)
     {
-        if (target3_step)
-            current3_step++;
-        if (current3_step >= target3_step && target3_step)
+        if (motor3_mode == Constant_step && target3_step)
         {
-            current3_step = 0;
-            target3_step = 0;
-            Motor3_SetSpeed(0, 0, 0);
+            current3_step++;
+            if (current3_step >= target3_step)
+            {
+                current3_step = 0;
+                target3_step = 0;
+                Motor3_SetSpeed(0, 0, 0);
+            }
         }
     }
 }

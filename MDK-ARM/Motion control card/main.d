@@ -38,3 +38,5 @@ motion control card\main.o: ../Hardware/serial.h
 motion control card\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 motion control card\main.o: ../Applications/Scheduler.h
 motion control card\main.o: ../Applications/control.h
+motion control card\main.o: ../Hardware/Photo_sensitive.h
+motion control card\main.o: ../Hardware/led.h

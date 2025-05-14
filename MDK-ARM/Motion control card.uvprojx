@@ -513,56 +513,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>New Group</GroupName>
-          <Files>
-            <File>
-              <FileName>control.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Applications\control.c</FilePath>
-            </File>
-            <File>
-              <FileName>control.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Applications\control.h</FilePath>
-            </File>
-            <File>
-              <FileName>include.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Applications\include.h</FilePath>
-            </File>
-            <File>
-              <FileName>Scheduler.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Applications\Scheduler.c</FilePath>
-            </File>
-            <File>
-              <FileName>Scheduler.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Applications\Scheduler.h</FilePath>
-            </File>
-            <File>
-              <FileName>H_Tmc2209.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\H_Tmc2209.c</FilePath>
-            </File>
-            <File>
-              <FileName>H_Tmc2209.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\H_Tmc2209.h</FilePath>
-            </File>
-            <File>
-              <FileName>Serial.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\Serial.c</FilePath>
-            </File>
-            <File>
-              <FileName>Serial.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\Serial.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>::CMSIS</GroupName>
         </Group>
       </Groups>

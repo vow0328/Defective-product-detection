@@ -26,11 +26,17 @@
 #define COM3OUT_Pin GPIO_PIN_10
 #define COM3OUT_GPIO_Port GPIOA
 
+typedef enum
+{
+    Constant_speed = 1, // 恒速模式
+    Constant_step = 2,  // 定步模式
+    STOP_mode = 3       // 停止模式
+} MotorMode;
+
 // 加速度/减速度：单位 Hz/ms （每 1ms SysTick 增/减多少 Hz）
 #define ACCEL_HZ_PER_MS 1000U
 // 定时器输入时钟：72 MHz，预分频 7200 → 定时器计数频率 = 10 kHz
-#define TIMER_CLK_HZ 720000U
-
+#define TIMER_CLK_HZ 1000000U
 
 void Motor_Init(void);
 
