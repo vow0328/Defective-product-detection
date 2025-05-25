@@ -2,6 +2,8 @@
 
 uint8_t read_Photo_sensor(uint8_t num)
 {
+    
+
     switch (num)
     {
     case 1:

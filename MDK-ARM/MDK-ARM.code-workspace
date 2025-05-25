@@ -19,7 +19,9 @@
             "tim.h": "c",
             "math.h": "c",
             "stdarg.h": "c",
-            "control.h": "c"
+            "control.h": "c",
+            "photo_sensitive.h": "c",
+            "led.h": "c"
         }
     },
     "extensions": {}

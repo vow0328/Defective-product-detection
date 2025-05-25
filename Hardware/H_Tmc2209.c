@@ -41,7 +41,7 @@ void Motor_SetSpeed(uint8_t num, uint8_t mode, GPIO_PinState dir, uint16_t hz) /
     case Constant_step:
         motor_mode = Constant_step;
         target_step = hz; // 模式一不限步数,模式二步数为输入脉冲数;
-        hz = 200;         // 模式一速度为输入速度,模式二固定速度 200为一秒一圈
+        hz = 800;         // 模式一速度为输入速度,模式二固定速度 200为一秒一圈
         break;
     case STOP_mode:
         motor_mode = STOP_mode;
@@ -50,6 +50,7 @@ void Motor_SetSpeed(uint8_t num, uint8_t mode, GPIO_PinState dir, uint16_t hz) /
     default:
         break;
     }
+    //hz = (hz > 2000) ? 2000 : hz;
     switch (num)
     {
     case 1:

@@ -339,9 +339,7 @@
       }
     },
     "Motion control card": {
-      "excludeList": [
-        "<virtual_root>/New Group"
-      ],
+      "excludeList": [],
       "toolchain": "AC5",
       "compileConfig": {
         "cpuType": "Cortex-M3",
@@ -503,15 +501,13 @@
           "../Drivers/CMSIS/Device/ST/STM32F1xx/Include",
           "../Drivers/CMSIS/Include",
           "../Applications",
-          "RTE/_Motion control card",
           "../Hardware",
-          ".."
+          "RTE/_Motion control card"
         ],
         "libList": [],
         "defineList": [
           "USE_HAL_DRIVER",
-          "STM32F103xE",
-          "STM32F10X_HD"
+          "STM32F103xE"
         ]
       },
       "builderOptions": {
