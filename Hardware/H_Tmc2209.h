@@ -34,9 +34,10 @@ typedef enum
 } MotorMode;
 
 // 加速度/减速度：单位 Hz/ms （每 1ms SysTick 增/减多少 Hz）
-#define ACCEL_HZ_PER_MS 1000U
+#define ACCEL_HZ 100u
 // 定时器输入时钟：72 MHz，预分频 7200 → 定时器计数频率 = 10 kHz
-#define TIMER_CLK_HZ 1000000U
+#define TIMER_CLK_HZ 1000000u
+#define Step_compensation 7u
 
 void Motor_Init(void);
 
