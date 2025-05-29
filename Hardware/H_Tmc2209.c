@@ -196,8 +196,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
             {
                 current2_step = 0;
                 target2_step = 0;
-                current2_hz = 0;
-                target2_hz = 0;
                 Motor2_SetSpeed(0, 0, 0);
                 HAL_TIM_PWM_Stop(&htim8, TIM_CHANNEL_1);
             }
@@ -216,8 +214,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
             {
                 current3_step = 0;
                 target3_step = 0;
-                current3_hz = 0;
-                target3_hz = 0;
                 Motor3_SetSpeed(0, 0, 0);
                 HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
             }
