@@ -26,6 +26,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "include.h"
+#include "H_Tmc2209.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,7 +97,6 @@ int main(void)
   MX_UART5_Init();
   MX_USART3_UART_Init();
   MX_USART2_UART_Init();
-  MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
   Serial_Init();
   Motor_Init();
@@ -112,10 +112,6 @@ int main(void)
   // Motor1_SetSpeed(1, 1, 200);
   //  Motor2_SetSpeed(1, 1, 200);
   //  Motor3_SetSpeed(1, 1, 200);
-  Motor_SetSpeed(1, 2, 1, 1600);
-  HAL_GPIO_WritePin(EN1OUT_GPIO_Port, EN1OUT_Pin, GPIO_PIN_SET);     // 1使能 0失能
-  HAL_GPIO_WritePin(COM1OUT_GPIO_Port, COM1OUT_Pin, GPIO_PIN_RESET); // COM拉低
-  HAL_GPIO_WritePin(DIR1OUT_GPIO_Port, DIR1OUT_Pin, 1); // 电机方向 1正转0反转
 
    
   while (1)
@@ -124,22 +120,13 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     // Scheduler_Run();
-    target1_step = 1600;
 
-    HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);  // 启动pwm模式
-    target1_hz = 1600;                         // 更新目标等级
-    __HAL_TIM_CLEAR_IT(&htim1, TIM_CHANNEL_1); // 清除中断标志位
-
+    Motor1_Set(1, 1, 0 , 1600);
+    HAL_Delay(4000);
+    Motor1_Set(1, 1, 1600 , 0);
     HAL_Delay(3000);
-
-    target1_step = 1600;
-    
-
-    HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);  // 启动pwm模式
-    target1_hz = 3200;                         // 更新目标等级
-    __HAL_TIM_CLEAR_IT(&htim1, TIM_CHANNEL_1); // 清除中断标志位
-
-    HAL_Delay(3000);
+     Motor1_Set(1, 1, 0 , 0);
+    HAL_Delay(2000);
   }
   /* USER CODE END 3 */
 }

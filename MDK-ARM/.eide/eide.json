@@ -339,7 +339,10 @@
       }
     },
     "Motion control card": {
-      "excludeList": [],
+      "excludeList": [
+        "../Applications/control.c",
+        "../Applications/Scheduler.c"
+      ],
       "toolchain": "AC5",
       "compileConfig": {
         "cpuType": "Cortex-M3",

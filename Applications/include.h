@@ -1,4 +1,5 @@
 #include "stm32f1xx_hal.h"
+#include "stm32f1xx_hal_tim.h"
 #include "main.h"
 #include "dma.h"
 #include "tim.h"
