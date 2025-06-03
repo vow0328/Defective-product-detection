@@ -33,8 +33,19 @@ typedef enum
     STOP_mode = 3       // 停止模式
 } MotorMode;
 
-void Motor_Init();
-void Motor1_Set(uint8_t en, GPIO_PinState dir, uint16_t hz,uint32_t step);
+// void Motor1_Set(uint8_t en, GPIO_PinState dir, uint16_t hz, uint16_t step);
+
+// 加速度/减速度：单位 Hz/ms （每 1ms SysTick 增/减多少 Hz）
+#define ACCEL_HZ 100u
+// 定时器输入时钟：72 MHz，预分频 72 → 定时器计数频率 = 10 kHz
+#define TIMER_CLK_HZ 1000000u
+
+void Motor_Init(void);
+
+void Motor_SetSpeed(uint8_t num, uint8_t mode, GPIO_PinState dir, uint16_t hz);
+void Motor1_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t level);
+void Motor2_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t level);
+void Motor3_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t level);
 
 uint16_t Motor1_GetStep();
 uint16_t Motor2_GetStep();
