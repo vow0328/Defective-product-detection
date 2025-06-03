@@ -43,8 +43,8 @@ void Motor_SetSpeed(uint8_t num, uint8_t mode, GPIO_PinState dir, uint16_t hz) /
         break;
     case Constant_step:
         motor_mode = Constant_step;
-        target_step = hz + Step_compensation; // 模式一不限步数,模式二步数为输入脉冲数;
-        hz = 3200;                            // 模式一速度为输入速度,模式二固定速度 200为一秒一圈
+        target_step = hz; // 模式一不限步数,模式二步数为输入脉冲数;
+        hz = 800;         // 模式一速度为输入速度,模式二固定速度 200为一秒一圈
         decel_step = (hz / ACCEL_HZ) + ((hz % ACCEL_HZ != 0) ? 1 : 0);
         break;
     case STOP_mode:
@@ -90,6 +90,7 @@ void Motor1_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t hz)
     HAL_GPIO_WritePin(DIR1OUT_GPIO_Port, DIR1OUT_Pin, dir); // 电机方向 1正转0反转
     HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);               // 启动pwm模式
     target1_hz = hz;                                        // 更新目标等级
+    __HAL_TIM_CLEAR_IT(&htim1, TIM_CHANNEL_1); // 清除中断标志位
 }
 void Motor2_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t hz)
 {
@@ -99,6 +100,7 @@ void Motor2_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t hz)
     HAL_GPIO_WritePin(DIR2OUT_GPIO_Port, DIR2OUT_Pin, dir); // 电机方向 1正转0反转
     HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_1);               // 启动pwm模式
     target2_hz = hz;                                        // 更新目标等级
+    __HAL_TIM_CLEAR_IT(&htim2, TIM_CHANNEL_4);
 }
 void Motor3_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t hz)
 {
@@ -108,6 +110,7 @@ void Motor3_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t hz)
     HAL_GPIO_WritePin(DIR3OUT_GPIO_Port, DIR3OUT_Pin, dir); // 电机方向 1正转0反转
     HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);               // 启动pwm模式
     target3_hz = hz;                                        // 更新目标等级
+    __HAL_TIM_CLEAR_IT(&htim8, TIM_CHANNEL_1);
 }
 
 uint16_t Motor1_GetStep() // 细分步数为1  脉冲大概为180度
@@ -145,10 +148,31 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     if (htim == &htim6)
     {
         // 三个电机统一使用梯形加速曲线
-        ramp((volatile uint16_t *)&current1_hz, (volatile uint16_t *)&target1_hz);
-        ramp((volatile uint16_t *)&current2_hz, (volatile uint16_t *)&target2_hz);
-        ramp((volatile uint16_t *)&current3_hz, (volatile uint16_t *)&target3_hz);
-
+        // ramp((volatile uint16_t *)&current1_hz, (volatile uint16_t *)&target1_hz);
+        // ramp((volatile uint16_t *)&current2_hz, (volatile uint16_t *)&target2_hz);
+        // ramp((volatile uint16_t *)&current3_hz, (volatile uint16_t *)&target3_hz);
+        // if(current1_hz<target1_hz){
+        //     uint16_t diff=target1_hz-current1_hz;
+        //    current1_hz+=(diff < ACCEL_HZ) ? diff : ACCEL_HZ;
+        // }else if(current1_hz>target1_hz){
+        //     uint16_t diff=current1_hz-target1_hz;
+        //     current1_hz-=(diff < ACCEL_HZ) ? diff : ACCEL_HZ;
+        // }
+        // if (current1_step + motor1_decel_step >= target1_step && target1_hz != 0 && motor1_mode == Constant_step)
+        // {
+        //     target1_hz = 0;
+        // }
+        // if (current2_step + motor2_decel_step >= target2_step && target2_hz != 0 && motor2_mode == Constant_step)
+        // {
+        //     target2_hz = 0;
+        // }
+        // if (current3_step + motor3_decel_step >= target3_step && target3_hz != 0 && motor3_mode == Constant_step)
+        // {
+        //     target3_hz = 0;
+        // }
+        current1_hz = target1_hz;
+        current2_hz = target2_hz;
+        current3_hz = target3_hz;
         // 计算 ARR 和 CCR
         if (current1_hz)
         {
@@ -178,12 +202,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
             {
                 current1_step = 0;
                 target1_step = 0;
+                motor1_decel_step = 0;
+                current1_hz = 0;
+                target1_hz = 0;
                 Motor1_SetSpeed(0, 0, 0);
                 HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_4);
-            }
-            if (current1_step + motor1_decel_step >= target1_step && target1_hz != 0)
-            {
-                target1_hz = 0;
             }
         }
     }
@@ -196,12 +219,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
             {
                 current2_step = 0;
                 target2_step = 0;
+                motor2_decel_step = 0;
+                current2_hz = 0;
+                target2_hz = 0;
                 Motor2_SetSpeed(0, 0, 0);
                 HAL_TIM_PWM_Stop(&htim8, TIM_CHANNEL_1);
-            }
-            if (current2_step + motor2_decel_step >= target2_step && target2_hz != 0)
-            {
-                target2_hz = 0;
             }
         }
     }
@@ -214,12 +236,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
             {
                 current3_step = 0;
                 target3_step = 0;
+                motor3_decel_step = 0;
+                current3_hz = 0;
+                target3_hz = 0;
                 Motor3_SetSpeed(0, 0, 0);
                 HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
-            }
-            if (current3_step + motor3_decel_step >= target3_step && target3_hz != 0)
-            {
-                target3_hz = 0;
             }
         }
     }
