@@ -25,6 +25,11 @@ static void Loop_20Hz(void) // 50ms执行一次
 {
 }
 
+static void Loop_10Hz(void) // 100ms执行一次
+{
+    //send_Photo_sensor();
+}
+
 static void Loop_2Hz(void) // 500ms执行一次
 {
   
@@ -38,6 +43,7 @@ static sched_task_t sched_tasks[] =
         {Loop_100Hz, 100, 0, 0},
         {Loop_50Hz, 50, 0, 0},
         {Loop_20Hz, 20, 0, 0},
+        {Loop_10Hz, 10, 0, 0},
         {Loop_2Hz, 2, 0, 0},
 };
 // 根据数组长度，判断线程数量

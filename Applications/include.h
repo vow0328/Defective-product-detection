@@ -11,3 +11,4 @@
 #include "control.h"
 #include "Photo_sensitive.h"
 #include "led.h"
+#include "math.h"

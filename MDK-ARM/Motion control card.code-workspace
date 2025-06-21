@@ -4,6 +4,12 @@
             "path": "."
         }
     ],
-    "settings": {},
+    "settings": {
+        "files.associations": {
+            "include.h": "c",
+            "photo_sensitive.h": "c",
+            "led.h": "c"
+        }
+    },
     "extensions": {}
 }
