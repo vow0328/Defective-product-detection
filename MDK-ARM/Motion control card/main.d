@@ -40,3 +40,4 @@ motion control card\main.o: ../Applications/Scheduler.h
 motion control card\main.o: ../Applications/control.h
 motion control card\main.o: ../Hardware/Photo_sensitive.h
 motion control card\main.o: ../Hardware/led.h
+motion control card\main.o: ../Hardware/OLED.h

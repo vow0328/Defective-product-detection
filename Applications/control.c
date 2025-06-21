@@ -15,10 +15,10 @@ void Command_Control(void)
         pulses = (Command[3] << 8) | Command[4];    // 脉冲数
         Motor_SetSpeed(Motor, motion, dir, pulses); // 根据输入参数设置电机运动
         break;
-    case 0x02:                           // 四路输出控制
+    case 0x02:                           // 输出控制
         Serial3_GetRxPacket(Command, 1); // 读取串口下一步指令
         uint8_t Led_num = Command[0];
-        for (uint8_t i = 1; i <= 4; i++)
+        for (uint8_t i = 1; i <= 8; i++)
         {
             led_control(i, (Led_num & (1 << (i-1))));
         }

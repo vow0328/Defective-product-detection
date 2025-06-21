@@ -7,8 +7,15 @@
     "settings": {
         "files.associations": {
             "include.h": "c",
+            "stm32f1xx_hal.h": "c",
+            "oled.h": "c",
             "photo_sensitive.h": "c",
-            "led.h": "c"
+            "gpio.h": "c",
+            "serial.h": "c",
+            "control.h": "c",
+            "stm32f1xx_hal_tim.h": "c",
+            "h_tmc2209.h": "c",
+            "scheduler.h": "c"
         }
     },
     "extensions": {}

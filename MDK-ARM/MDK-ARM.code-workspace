@@ -21,8 +21,7 @@
             "stdarg.h": "c",
             "control.h": "c",
             "photo_sensitive.h": "c",
-            "led.h": "c",
-            "stm32f1xx_hal_tim.h": "c"
+            "led.h": "c"
         }
     },
     "extensions": {}
