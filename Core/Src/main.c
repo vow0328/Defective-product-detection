@@ -102,19 +102,20 @@ int main(void)
   Serial_Init();
   Motor_Init();
   led_init();
-  //OLED_Init();
+  // OLED_Init();
   Scheduler_Setup();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  // Motor_SetSpeed(1,1,1,200);
 
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    // Motor_SetSpeed(3,2,1,1600);
+    // HAL_Delay(3000);
     // Motor1_SetSpeed(1, 1, 1600);
     // Motor2_SetSpeed(1, 1, 1600);
     // Motor3_SetSpeed(1, 1, 1600);

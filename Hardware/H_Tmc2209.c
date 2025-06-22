@@ -7,8 +7,8 @@ void Motor_Init()
     __HAL_TIM_CLEAR_IT(&htim5, TIM_CHANNEL_4);
     __HAL_TIM_CLEAR_IT(&htim3, TIM_CHANNEL_3);
     __HAL_TIM_CLEAR_IT(&htim2, TIM_CHANNEL_4);
-    __HAL_TIM_CLEAR_IT(&htim8, TIM_CHANNEL_1);
-    __HAL_TIM_CLEAR_IT(&htim1, TIM_CHANNEL_1); // 清除中断标志位
+    // __HAL_TIM_CLEAR_IT(&htim8, TIM_CHANNEL_1);
+    // __HAL_TIM_CLEAR_IT(&htim1, TIM_CHANNEL_1); // 清除中断标志位
 }
 
 void Motor_SetSpeed(uint8_t num, uint8_t mode, GPIO_PinState dir, uint16_t hz) // 模式1定速 模式2定步 模式3停止
@@ -106,7 +106,7 @@ void Motor3_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t hz)
         __HAL_TIM_SET_COUNTER(&htim2, 0); // 重置计数器
         motor[3].hz = hz;                 // 更新目标等级
     }
-    HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1); // 启动pwm模式
+    HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4); // 启动pwm模式
     HAL_TIM_Base_Start_IT(&htim2);            // 启动计步
 }
 

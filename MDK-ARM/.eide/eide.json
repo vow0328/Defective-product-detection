@@ -339,7 +339,9 @@
       }
     },
     "Motion control card": {
-      "excludeList": [],
+      "excludeList": [
+        "../Hardware/OLED.c"
+      ],
       "toolchain": "AC5",
       "compileConfig": {
         "cpuType": "Cortex-M3",
