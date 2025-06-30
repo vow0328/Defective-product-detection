@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d0c72e69-6eb5-486a-b488-d902f9a17819" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.mxproject" beforeDir="false" afterPath="$PROJECT_DIR$/.mxproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/Scheduler.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/Scheduler.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Applications/include.h" beforeDir="false" afterPath="$PROJECT_DIR$/Applications/include.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/main.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/stm32f1xx_it.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/stm32f1xx_it.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/tim.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/tim.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/dma.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/dma.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/gpio.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/gpio.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/stm32f1xx_hal_msp.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/stm32f1xx_hal_msp.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/stm32f1xx_it.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/stm32f1xx_it.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/tim.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/tim.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/usart.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/usart.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Defective product detection.ioc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hardware/H_Tmc2209.c" beforeDir="false" afterPath="$PROJECT_DIR$/Hardware/H_Tmc2209.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hardware/H_Tmc2209.h" beforeDir="false" afterPath="$PROJECT_DIR$/Hardware/H_Tmc2209.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hardware/Serial.c" beforeDir="false" afterPath="$PROJECT_DIR$/Hardware/Serial.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hardware/Serial.h" beforeDir="false" afterPath="$PROJECT_DIR$/Hardware/Serial.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hardware/led.c" beforeDir="false" afterPath="$PROJECT_DIR$/Hardware/led.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hardware/led.h" beforeDir="false" afterPath="$PROJECT_DIR$/Hardware/led.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection.uvprojx" beforeDir="false" afterPath="$PROJECT_DIR$/MDK-ARM/Defective product detection.uvprojx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/Defective product detection.axf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/Defective product detection.build_log.htm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/Defective product detection.htm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/Defective product detection.lnp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/Defective product detection.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/Defective product detection.sct" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/Defective product detection_Defective product detection.dep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/ExtDll.iex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/dma.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/dma.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/dma.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/gpio.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/gpio.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/gpio.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/h_tmc2209.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/h_tmc2209.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/h_tmc2209.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/iwdg.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/iwdg.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/iwdg.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/led.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/led.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/led.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/main.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/main.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/main.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/myspi.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/myspi.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/myspi.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/oled.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/oled.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/oled.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/serial.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/serial.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/serial.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/startup_stm32f103xb.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/startup_stm32f103xb.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_cortex.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_cortex.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_cortex.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_dma.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_dma.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_dma.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_exti.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_exti.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_exti.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_flash.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_flash.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_flash.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_flash_ex.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_flash_ex.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_flash_ex.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_gpio.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_gpio.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_gpio.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_gpio_ex.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_gpio_ex.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_gpio_ex.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_iwdg.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_iwdg.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_iwdg.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_msp.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_msp.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_msp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_pwr.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_pwr.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_pwr.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_rcc.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_rcc.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_rcc.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_rcc_ex.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_rcc_ex.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_rcc_ex.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_tim.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_tim.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_tim.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_tim_ex.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_tim_ex.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_tim_ex.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_uart.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_uart.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_hal_uart.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_it.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_it.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/stm32f1xx_it.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/system_stm32f1xx.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/system_stm32f1xx.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/system_stm32f1xx.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/tim.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/tim.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/tim.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/usart.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/usart.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/usart.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/w25q64.crf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/w25q64.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/Defective product detection/w25q64.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MDK-ARM/startup_stm32f103xb.lst" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2xMR5gpbBZnBU89l06uitdOmQ2U" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-975db3bf15a3-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.18034.82" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="d0c72e69-6eb5-486a-b488-d902f9a17819" name="更改" comment="" />
+      <created>1747745776100</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1747745776100</updated>
+    </task>
+    <servers />
+  </component>
+</project>

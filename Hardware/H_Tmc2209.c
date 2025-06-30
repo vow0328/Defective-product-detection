@@ -1,129 +1,203 @@
-#include "tim.h"
-#include "gpio.h"
-#include "math.h"
-#include "H_Tmc2209.h"
+#include "include.h"
+
+//  电机模式
+uint8_t motor1_mode = 0, motor2_mode = 0, motor3_mode = 0;
+
+// 直接以脉冲频率（Hz）控制
+uint16_t current1_hz = 0, target1_hz = 0;
+uint16_t current2_hz = 0, target2_hz = 0;
+uint16_t current3_hz = 0, target3_hz = 0;
 
 // 1号电机预计与当前值
-uint8_t current1_level = 0, target1_level = 0;
-uint32_t step1 = 0;
+uint16_t current1_step = 0, target1_step = 0;
 // 2号电机预计与当前值
-uint8_t current2_level = 0, target2_level = 0;
-uint32_t step2 = 0;
+uint16_t current2_step = 0, target2_step = 0;
 // 3号电机预计与当前值
-uint8_t current3_level = 0, target3_level = 0;
-uint32_t step3 = 0;
+uint16_t current3_step = 0, target3_step = 0;
 
-// 档位0：40hz 24999 档位39：1600hz 624
-int speed_levels[40] = {24999, 12499, 8332, 6249, 4999, 4165, 3570, 3124, 2776, 2499, 2271, 2082, 1922, 1784, 1665, 1561, 1469,
-                        1387, 1314, 1249, 1189, 1135, 1085, 1040, 999, 960, 924, 891, 861, 832, 805, 780, 756, 734, 713, 693, 674, 656, 640, 624};
 void Motor_Init()
 {
-    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-    HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
-    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-    HAL_TIM_Base_Start_IT(&htim1);
+    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1); // 启动pwm模式
+    HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
+    HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_1);
+    HAL_TIM_Base_Start_IT(&htim1); // 定时器启动
     HAL_TIM_Base_Start_IT(&htim2);
-    HAL_TIM_Base_Start_IT(&htim3);
-    HAL_TIM_Base_Start_IT(&htim4);
-    __HAL_TIM_CLEAR_IT(&htim1,TIM_CHANNEL_1);	
-    __HAL_TIM_CLEAR_IT(&htim2,TIM_CHANNEL_1);	
-    __HAL_TIM_CLEAR_IT(&htim3,TIM_CHANNEL_1);	
+    HAL_TIM_Base_Start_IT(&htim8);
+    __HAL_TIM_CLEAR_IT(&htim1, TIM_CHANNEL_1); // 清除中断标志位
+    __HAL_TIM_CLEAR_IT(&htim2, TIM_CHANNEL_4);
+    __HAL_TIM_CLEAR_IT(&htim8, TIM_CHANNEL_1);
 }
 
-void Motor1_SetSpeed(uint8_t en, GPIO_PinState dir, uint8_t level)
+void Motor_SetSpeed(uint8_t num, uint8_t mode, GPIO_PinState dir, uint16_t hz) // 模式1定速 模式2定步 模式3停止
 {
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, (en == ENABLE) ? GPIO_PIN_SET : GPIO_PIN_RESET); // 1使能 0失能
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
-
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, dir); // 电机方向 1正转0反转
-
-    level = (level > MAX_SPEED_LEVEL) ? MAX_SPEED_LEVEL : level; // 限幅
-    target1_level = level;                                       // 更新目标等级
+    uint8_t motor_mode = 0, en = 1;
+    uint16_t target_step = 0;
+    switch (mode)
+    {
+    case Constant_speed:
+        motor_mode = Constant_speed;
+        break;
+    case Constant_step:
+        motor_mode = Constant_step;
+        target_step = hz; // 模式一不限步数,模式二步数为输入脉冲数;
+        hz = 2000;         // 模式一速度为输入速度,模式二固定速度 200为一秒一圈
+        break;
+    case STOP_mode:
+        motor_mode = STOP_mode;
+        en = 0;
+        break;
+    default:
+        break;
+    }
+    hz = (hz > 2000) ? 2000 : hz;
+    switch (num)
+    {
+    case 1:
+        motor1_mode = motor_mode;
+        target1_step = (motor1_mode == Constant_step) ? target_step : 0;
+        current1_step = 0;
+        Motor1_SetSpeed(en, dir, hz);
+        break;
+    case 2:
+        motor2_mode = motor_mode;
+        target2_step = (motor2_mode == Constant_step) ? target_step : 0;
+        current2_step = 0;
+        Motor2_SetSpeed(en, dir, hz);
+        break;
+    case 3:
+        motor3_mode = motor_mode;
+        target3_step = (motor3_mode == Constant_step) ? target_step : 0;
+        current3_step = 0;
+        Motor3_SetSpeed(en, dir, hz);
+        break;
+    default:
+        break;
+    }
 }
-void Motor2_SetSpeed(uint8_t en, GPIO_PinState dir, uint8_t level)
+
+void Motor1_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t hz)
 {
-    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_15, (en == ENABLE) ? GPIO_PIN_RESET : GPIO_PIN_SET); // 1使能 0失能
-    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(EN1OUT_GPIO_Port, EN1OUT_Pin, (en == ENABLE) ? GPIO_PIN_SET : GPIO_PIN_RESET); // 1使能 0失能
+    HAL_GPIO_WritePin(COM1OUT_GPIO_Port, COM1OUT_Pin, GPIO_PIN_RESET);                               // COM拉低
 
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, dir); // 电机方向 1正转0反转
+    HAL_GPIO_WritePin(DIR1OUT_GPIO_Port, DIR1OUT_Pin, dir); // 电机方向 1正转0反转
 
-    level = (level > MAX_SPEED_LEVEL) ? MAX_SPEED_LEVEL : level; // 限幅
-    target2_level = level;                                       // 更新目标等级
+    target1_hz = hz; // 更新目标等级
 }
-void Motor3_SetSpeed(uint8_t en, GPIO_PinState dir, uint8_t level)
+void Motor2_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t hz)
 {
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, (en == ENABLE) ? GPIO_PIN_RESET : GPIO_PIN_SET); // 1使能 0失能
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(EN2OUT_GPIO_Port, EN2OUT_Pin, (en == ENABLE) ? GPIO_PIN_SET : GPIO_PIN_RESET); // 1使能 0失能
+    HAL_GPIO_WritePin(COM2OUT_GPIO_Port, COM2OUT_Pin, GPIO_PIN_RESET);                               // COM拉低
 
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, dir); // 电机方向 1正转0反转
+    HAL_GPIO_WritePin(DIR2OUT_GPIO_Port, DIR2OUT_Pin, dir); // 电机方向 1正转0反转
 
-    level = (level > MAX_SPEED_LEVEL) ? MAX_SPEED_LEVEL : level; // 限幅
-    target3_level = level;                                       // 更新目标等级
+    target2_hz = hz; // 更新目标等级
 }
-uint32_t Motor1_GetStep()//细分步数为1是110个脉冲大概为180度
-{ // 电机脉冲值获取
-    return step1;
-}
-uint32_t Motor2_GetStep()
-{ // 电机脉冲值获取
-    return step2;
-}
-uint32_t Motor3_GetStep()
-{ // 电机脉冲值获取
-    return step3;
+void Motor3_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t hz)
+{
+    HAL_GPIO_WritePin(EN3OUT_GPIO_Port, EN3OUT_Pin, (en == ENABLE) ? GPIO_PIN_SET : GPIO_PIN_RESET); // 1使能 0失能
+    HAL_GPIO_WritePin(COM3OUT_GPIO_Port, COM3OUT_Pin, GPIO_PIN_RESET);                               // COM拉低
+
+    HAL_GPIO_WritePin(DIR3OUT_GPIO_Port, DIR3OUT_Pin, dir); // 电机方向 1正转0反转
+
+    target3_hz = hz; // 更新目标等级
 }
 
+uint16_t Motor1_GetStep() // 细分步数为1  脉冲大概为180度
+{                         // 电机脉冲值获取
+    return current1_step;
+}
+uint16_t Motor2_GetStep()
+{ // 电机脉冲值获取
+    return current2_step;
+}
+uint16_t Motor3_GetStep()
+{ // 电机脉冲值获取
+    return current3_step;
+}
+
+// 在 HAL_TIM_PeriodElapsedCallback 函数外部定义 ramp 函数
+static void ramp(volatile uint16_t *cur, volatile uint16_t *tgt)
+{
+    if (*cur < *tgt)
+    {
+        uint16_t diff = *tgt - *cur;
+        *cur += (diff < ACCEL_HZ_PER_MS) ? diff : ACCEL_HZ_PER_MS;
+    }
+    else if (*cur > *tgt)
+    {
+        uint16_t diff = *cur - *tgt;
+        *cur -= (diff < ACCEL_HZ_PER_MS) ? diff : ACCEL_HZ_PER_MS;
+    }
+}
+
+void Motor_Control_Task(void){
+      // 三个电机统一使用梯形加速曲线
+        ramp((volatile uint16_t *)&current1_hz, (volatile uint16_t *)&target1_hz);
+        ramp((volatile uint16_t *)&current2_hz, (volatile uint16_t *)&target2_hz);
+        ramp((volatile uint16_t *)&current3_hz, (volatile uint16_t *)&target3_hz);
+
+        // 计算 ARR 和 CCR
+        if (current1_hz)
+        {
+            uint16_t arr1 = (TIMER_CLK_HZ / current1_hz) - 1;
+            __HAL_TIM_SET_AUTORELOAD(&htim2, arr1);
+            __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, arr1 / 2);
+        }
+        if (current2_hz)
+        {
+            uint16_t arr2 = (TIMER_CLK_HZ / current2_hz) - 1;
+            __HAL_TIM_SET_AUTORELOAD(&htim8, arr2);
+            __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, arr2 / 2);
+        }
+        if (current3_hz)
+        {
+            uint16_t arr3 = (TIMER_CLK_HZ / current3_hz) - 1;
+            __HAL_TIM_SET_AUTORELOAD(&htim1, arr3);
+            __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, arr3 / 2);
+        }
+}
 // 开启tim4定时中断用于调整arr与ccr
 // 开启tim1,2,3更新中断用于计算脉冲数
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-    if (htim == &htim4)
+     if (htim == &htim2)
     {
-        // 逐步逼近目标档位
-        if (current1_level < target1_level)
-            current1_level++;
-        else if (current1_level > target1_level)
-            current1_level--;
-
-        // 逐步逼近目标档位
-        if (current2_level < target2_level)
-            current2_level++;
-        else if (current2_level > target2_level)
-            current2_level--;
-
-        // 逐步逼近目标档位
-        if (current3_level < target3_level)
-            current3_level++;
-        else if (current3_level > target3_level)
-            current3_level--;
-
-        // 更新TIM2参数
-        uint32_t new_arr1 = speed_levels[current1_level];
-        uint32_t new_arr2 = speed_levels[current2_level];
-        uint32_t new_arr3 = speed_levels[current3_level];
-
-        __HAL_TIM_SET_AUTORELOAD(&htim1, new_arr1);                 // 设置ARR
-        __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, new_arr1 / 2); // 50%占空比
-
-        __HAL_TIM_SET_AUTORELOAD(&htim2, new_arr2);                 // 设置ARR
-        __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, new_arr2 / 2); // 50%占空比
-
-        __HAL_TIM_SET_AUTORELOAD(&htim3, new_arr3);                 // 设置ARR
-        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, new_arr3 / 2); // 50%占空比
+        if (motor1_mode == Constant_step && target1_step)
+        {
+            current1_step++;
+            if (current1_step >= target1_step)
+            {
+                current1_step = 0;
+                target1_step = 0;
+                Motor1_SetSpeed(0, 0, 0);
+            }
+        }
+    }
+    else if (htim == &htim8)
+    {
+        if (motor2_mode == Constant_step && target2_step)
+        {
+            current2_step++;
+            if (current2_step >= target2_step)
+            {
+                current2_step = 0;
+                target2_step = 0;
+                Motor2_SetSpeed(0, 0, 0);
+            }
+        }
     }
     else if (htim == &htim1)
     {
-        // TIM1每个脉冲周期计数
-        step1++;
-    }
-    else if (htim == &htim2)
-    {
-        // TIM2每个脉冲周期计数
-        step2++;
-    }
-    else if (htim == &htim3)
-    {
-        // TIM3每个脉冲周期计数
-        step3++;
+        if (motor3_mode == Constant_step && target3_step)
+        {
+            current3_step++;
+            if (current3_step >= target3_step)
+            {
+                current3_step = 0;
+                target3_step = 0;
+                Motor3_SetSpeed(0, 0, 0);
+            }
+        }
     }
 }

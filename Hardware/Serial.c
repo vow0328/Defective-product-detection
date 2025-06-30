@@ -4,9 +4,11 @@
 #include <stdarg.h>
 
 uint8_t Serial3_RxData; // 定义串口接收的数据变量
-uint8_t volatile Serial3_RxPacket[10];
+uint8_t Serial3_RxPacket[10];
+uint8_t Serial3_RxFlag;
+
 uint8_t Serial2_RxData; // 定义串口接收的数据变量
-uint8_t volatile Serial2_RxPacket[10];
+uint8_t Serial2_RxPacket[10];
 
 /**
  * 函数：USART初始化函数
@@ -16,8 +18,8 @@ uint8_t volatile Serial2_RxPacket[10];
 void Serial_Init(void)
 {
   // 启用接收中断
-  HAL_UART_Receive_IT(&huart2, &Serial2_RxData, 1);
-  HAL_UART_Receive_IT(&huart3, &Serial3_RxData, 1);
+  HAL_UART_Receive_DMA(&huart2, &Serial2_RxData, 1);
+  HAL_UART_Receive_DMA(&huart3, &Serial3_RxData, 1);
 }
 
 /**
@@ -114,7 +116,12 @@ void Serial3_Printf(char *format, ...)
  */
 uint8_t Serial3_GetRxData(void)
 {
-  return Serial3_RxData; // 返回接收的数据变量
+  if (Serial3_RxFlag == 1)
+  {
+    Serial3_RxFlag = 0;
+    return Serial3_RxPacket[0]; // 返回接收的数据变量
+  }
+  return 0;
 }
 
 /**
@@ -213,6 +220,19 @@ uint8_t Serial2_GetRxData(void)
 }
 
 /**
+ * 函数：获取串口接收的数据
+ * 参 数：无
+ * 返回 值：接收的数据，范围：0~255
+ */
+void Serial3_GetRxPacket(uint8_t *buf, size_t n)
+{
+  for (int i = 0; i < n; i++)
+  {
+    buf[i] = Serial3_RxPacket[i + 1];
+  }
+}
+
+/**
  * 函数：USART接收中断回调函数
  * 参 数：无
  * 返回 值：无
@@ -232,36 +252,21 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
       }
       else if (Serial3_RxData == 0xFE)
       {
+        //Serial3_SendByte(0xaa);
         RxState = 0;
+        pRxPacket = 0;
+        Serial3_RxFlag = 1;
       }
     }
     if (Serial3_RxData == 0xFF)
     {
       RxState = 1;
     }
-    HAL_UART_Receive_IT(&huart3, &Serial3_RxData, 1); // 重新启动接收中断
+    HAL_UART_Receive_DMA(&huart3, &Serial3_RxData, 1); // 重新启动接收中断
   }
 
-  if (huart->Instance == USART2) // 确保是USART3的中断
+  if (huart->Instance == USART2) // 确保是USART2的中断
   {
-
-    if (RxState == 1)
-    {
-      if (Serial2_RxData != 0xFE)
-      {
-        Serial2_RxPacket[pRxPacket++] = Serial2_RxData;
-      }
-      else if (Serial2_RxData == 0xFE)
-      {
-        RxState = 0;
-        pRxPacket = 0;
-        Motor1_SetSpeed(Serial2_RxPacket[1],Serial2_RxPacket[2],Serial2_RxPacket[3]);
-      }
-    }
-    if (Serial2_RxData == 0xFF)
-    {
-      RxState = 1;
-    }
-    HAL_UART_Receive_IT(&huart2, &Serial2_RxData, 1); // 重新启动接收中断
+    // 串口留给串口屏
   }
 }

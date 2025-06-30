@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 #include "dma.h"
 #include "tim.h"
 #include "usart.h"
@@ -25,13 +26,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "H_Tmc2209.h"
-#include "MySPI.h"
-#include "W25Q64.h"
-#include "OLED.h"
-#include "led.h"
-#include "serial.h"
-#include "Scheduler.h"
+#include "include.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,6 +52,7 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -98,25 +94,29 @@ int main(void)
   MX_DMA_Init();
   MX_TIM1_Init();
   MX_TIM2_Init();
-  MX_USART2_UART_Init();
+  MX_TIM8_Init();
   MX_USART3_UART_Init();
-  MX_TIM3_Init();
-  MX_TIM4_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  OLED_Init();
+  // OLED_Init();
   // W25Q64_Init();
   Serial_Init();
   //HAL_Delay(1000);
   Motor_Init();
-  //Motor1_SetSpeed(1,1,5);
-  Scheduler_Setup(); // 调度器初始化，系统为裸奔，这里人工做了一个时分调度器
   /* USER CODE END 2 */
+
+  /* Call init function for freertos objects (in cmsis_os2.c) */
+  MX_FREERTOS_Init();
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    Scheduler_Run(); // 运行任务调度器，所有系统功能，除了中断服务函数，都在任务调度器内完成
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
