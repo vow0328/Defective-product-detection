@@ -2,7 +2,6 @@
 
 uint8_t read_Photo_sensor(uint8_t num)
 {
-    
 
     switch (num)
     {
@@ -36,10 +35,12 @@ uint8_t read_Photo_sensor(uint8_t num)
 }
 uint8_t send_Photo_sensor(void)
 {
-    uint8_t Input_num = 0x00;
-    for (uint8_t i = 1; i <= 8; i++)
+    uint16_t Input_num = 0x00;
+    // Serial3_SendByte(0xFF); // 发送八位输入的引脚状态
+    for (uint8_t i = 8; i > 0; i--)
     {
         Input_num = (Input_num << 1) | read_Photo_sensor(i);
     }
     Serial3_SendByte(Input_num); // 发送八位输入的引脚状态
+    // Serial3_SendByte(0xFE);      // 发送八位输入的引脚状态
 }
