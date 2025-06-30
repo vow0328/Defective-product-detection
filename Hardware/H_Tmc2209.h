@@ -5,26 +5,6 @@
 
 #define MAX_SPEED_LEVEL 39
 
-#define DIR1OUT_Pin GPIO_PIN_10
-#define DIR1OUT_GPIO_Port GPIOB
-#define EN1OUT_Pin GPIO_PIN_12
-#define EN1OUT_GPIO_Port GPIOB
-#define COM1OUT_Pin GPIO_PIN_13
-#define COM1OUT_GPIO_Port GPIOB
-
-#define DIR2OUT_Pin GPIO_PIN_15
-#define DIR2OUT_GPIO_Port GPIOB
-#define EN2OUT_Pin GPIO_PIN_7
-#define EN2OUT_GPIO_Port GPIOC
-#define COM2OUT_Pin GPIO_PIN_8
-#define COM2OUT_GPIO_Port GPIOC
-
-#define DIR3OUT_Pin GPIO_PIN_9
-#define DIR3OUT_GPIO_Port GPIOC
-#define EN3OUT_Pin GPIO_PIN_9
-#define EN3OUT_GPIO_Port GPIOA
-#define COM3OUT_Pin GPIO_PIN_10
-#define COM3OUT_GPIO_Port GPIOA
 
 typedef enum
 {
@@ -33,10 +13,18 @@ typedef enum
     STOP_mode = 3       // 停止模式
 } MotorMode;
 
+typedef struct
+{
+    uint8_t mode;
+    uint16_t hz;
+    uint16_t current_step;
+    uint16_t target_step;
+} MotorStruct;
+
 // 加速度/减速度：单位 Hz/ms （每 1ms SysTick 增/减多少 Hz）
-#define ACCEL_HZ_PER_MS 1000U
-// 定时器输入时钟：72 MHz，预分频 7200 → 定时器计数频率 = 10 kHz
-#define TIMER_CLK_HZ 1000000U
+#define ACCEL_HZ 100u
+// 定时器输入时钟：72 MHz，预分频 72 → 定时器计数频率 = 10 kHz
+#define TIMER_CLK_HZ 1000000u
 
 void Motor_Init(void);
 

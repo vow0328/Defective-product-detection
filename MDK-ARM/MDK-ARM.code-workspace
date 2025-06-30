@@ -6,23 +6,22 @@
     ],
     "settings": {
         "files.associations": {
+            "gpio.h": "c",
             "h_tmc2209.h": "c",
-            "stdarg.h": "c",
-            "stdio.h": "c",
-            "myspi.h": "c",
-            "main.h": "c",
-            "include.h": "c",
             "dma.h": "c",
-            "stm32f1xx_hal.h": "c",
-            "stm32f1xx.h": "c",
-            "scheduler.h": "c",
-            "led.h": "c",
-            "w25q64.h": "c",
-            "tim.h": "c",
+            "main.h": "c",
             "usart.h": "c",
-            "oled.h": "c",
+            "include.h": "c",
+            "stdio.h": "c",
+            "stm32f1xx_hal.h": "c",
             "serial.h": "c",
-            "gpio.h": "c"
+            "scheduler.h": "c",
+            "tim.h": "c",
+            "math.h": "c",
+            "stdarg.h": "c",
+            "control.h": "c",
+            "photo_sensitive.h": "c",
+            "led.h": "c"
         }
     },
     "extensions": {}
