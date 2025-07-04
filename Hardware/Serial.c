@@ -7,7 +7,6 @@ uint8_t Serial3_RxData; // 定义串口接收的数据变量
 uint8_t Serial3_RxPacket[10];
 uint8_t Serial3_RxFlag;
 
-
 /**
  * 函数：USART初始化函数
  * 参 数：无
@@ -26,7 +25,7 @@ void Serial_Init(void)
  */
 void Serial3_SendByte(uint8_t Byte)
 {
-  HAL_UART_Transmit_DMA(&huart3, &Byte, 1); // 使用HAL库发送一个字节
+  HAL_UART_Transmit(&huart3, &Byte, 1, HAL_MAX_DELAY); // 阻塞直到发送完成
 }
 
 /**
@@ -154,7 +153,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
       }
       else if (Serial3_RxData == 0xFE)
       {
-        Serial3_SendByte(0xaa);
+        // Serial3_SendByte(0xAC);
         RxState = 0;
         pRxPacket = 0;
         Serial3_RxFlag = 1;

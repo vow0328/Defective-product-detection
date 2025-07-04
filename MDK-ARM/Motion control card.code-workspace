@@ -4,6 +4,12 @@
             "path": "."
         }
     ],
-    "settings": {},
+    "settings": {
+        "files.associations": {
+            "tim.h": "c",
+            "dma.h": "c",
+            "main.h": "c"
+        }
+    },
     "extensions": {}
 }

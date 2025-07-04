@@ -97,13 +97,16 @@ int main(void)
   MX_USART3_UART_Init();
   MX_TIM3_Init();
   MX_TIM5_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
   HAL_Delay(500);
   Serial_Init();
   Motor_Init();
   led_init();
-  // OLED_Init();
-  Scheduler_Setup();
+  Scheduler_Setup(); // 初始化任务调度
+  // Motor1_SetSpeed(1, 1, 1600);
+  // Motor2_SetSpeed(1, 1, 1600);
+  // Motor6_SetSpeed(1, 1, 1600);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -114,12 +117,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    // Motor_SetSpeed(3,2,1,1600);
+    // Motor_SetSpeed(4, 2, 1, 1600);
     // HAL_Delay(3000);
-    // Motor1_SetSpeed(1, 1, 1600);
-    // Motor2_SetSpeed(1, 1, 1600);
-    // Motor3_SetSpeed(1, 1, 1600);
-    Scheduler_Run();
+    Scheduler_Run();//任务调度
   }
   /* USER CODE END 3 */
 }

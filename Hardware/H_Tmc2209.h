@@ -32,8 +32,14 @@ void Motor_SetSpeed(uint8_t num, uint8_t mode, GPIO_PinState dir, uint16_t hz);
 void Motor1_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t level);
 void Motor2_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t level);
 void Motor3_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t level);
+void Motor4_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t level);
+void Motor5_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t level);
+void Motor6_SetSpeed(uint8_t en, GPIO_PinState dir, uint16_t level);
 
 uint16_t Motor1_GetStep();
 uint16_t Motor2_GetStep();
 uint16_t Motor3_GetStep();
+uint16_t Motor4_GetStep();
+uint16_t Motor5_GetStep();
+uint16_t Motor6_GetStep();
 #endif
