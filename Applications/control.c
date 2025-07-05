@@ -4,6 +4,7 @@ void Command_Control(void)
 {
     uint8_t Motor, motion, dir;
     uint16_t pulses;
+    uint16_t vstart = 200, vmax = 1600, vacc = 100;
     uint8_t flag = Serial3_GetRxData(); // 读取串口状态
     switch (flag)
     {
@@ -13,7 +14,7 @@ void Command_Control(void)
         motion = Command[1];                        // 运动方式01:定速 02:定步 03:停止
         dir = Command[2];                           // 方向01:正转 00:反转
         pulses = (Command[3] << 8) | Command[4];    // 脉冲数
-        Motor_SetSpeed(Motor, motion, dir, pulses); // 根据输入参数设置电机运动
+        Motor_Set(Motor, motion, dir, pulses,vstart,vmax,vacc); // 根据输入参数设置电机运动
         break;
     case 0x02:                           // 输出控制
         Serial3_GetRxPacket(Command, 1); // 读取串口下一步指令

@@ -125,6 +125,11 @@
         "name": "::CMSIS",
         "files": [],
         "folders": []
+      },
+      {
+        "name": "include.c",
+        "files": [],
+        "folders": []
       }
     ]
   },
