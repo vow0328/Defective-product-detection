@@ -15,6 +15,6 @@
 
 version: "2.0"
 options:
-    Motion control card:
+    Dispensingmachine:
         files: {}
         virtualPathFiles: {}

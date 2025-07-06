@@ -27,7 +27,7 @@ extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f1xx_hal.h"
+#include "stm32f4xx_hal.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -57,70 +57,30 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define KEY2_Pin GPIO_PIN_0
-#define KEY2_GPIO_Port GPIOC
-#define KEY1_Pin GPIO_PIN_1
+#define KEY1_Pin GPIO_PIN_0
 #define KEY1_GPIO_Port GPIOC
-#define MOUT8_Pin GPIO_PIN_2
-#define MOUT8_GPIO_Port GPIOC
-#define MOUT7_Pin GPIO_PIN_3
-#define MOUT7_GPIO_Port GPIOC
-#define MOUT6_Pin GPIO_PIN_0
-#define MOUT6_GPIO_Port GPIOA
-#define MOUT5_Pin GPIO_PIN_1
-#define MOUT5_GPIO_Port GPIOA
-#define DIR5OUT_Pin GPIO_PIN_2
-#define DIR5OUT_GPIO_Port GPIOA
-#define EN5OUT_Pin GPIO_PIN_4
-#define EN5OUT_GPIO_Port GPIOA
-#define MOUT4_Pin GPIO_PIN_5
-#define MOUT4_GPIO_Port GPIOA
-#define MOUT3_Pin GPIO_PIN_6
-#define MOUT3_GPIO_Port GPIOA
-#define MOUT2_Pin GPIO_PIN_7
-#define MOUT2_GPIO_Port GPIOA
-#define MOUT1_Pin GPIO_PIN_4
-#define MOUT1_GPIO_Port GPIOC
-#define DIR4OUT_Pin GPIO_PIN_5
-#define DIR4OUT_GPIO_Port GPIOC
-#define EN4OUT_Pin GPIO_PIN_1
-#define EN4OUT_GPIO_Port GPIOB
-#define DIR3OUT_Pin GPIO_PIN_2
-#define DIR3OUT_GPIO_Port GPIOB
-#define EN3OUT_Pin GPIO_PIN_11
-#define EN3OUT_GPIO_Port GPIOB
-#define INPUT8_Pin GPIO_PIN_12
-#define INPUT8_GPIO_Port GPIOB
-#define INPUT7_Pin GPIO_PIN_13
-#define INPUT7_GPIO_Port GPIOB
-#define INPUT6_Pin GPIO_PIN_14
-#define INPUT6_GPIO_Port GPIOB
-#define INPUT5_Pin GPIO_PIN_15
-#define INPUT5_GPIO_Port GPIOB
-#define DIR2OUT_Pin GPIO_PIN_6
-#define DIR2OUT_GPIO_Port GPIOC
-#define EN2OUT_Pin GPIO_PIN_8
-#define EN2OUT_GPIO_Port GPIOC
-#define DIR1OUT_Pin GPIO_PIN_9
-#define DIR1OUT_GPIO_Port GPIOC
-#define EN1OUT_Pin GPIO_PIN_9
-#define EN1OUT_GPIO_Port GPIOA
-#define INPUT4_Pin GPIO_PIN_10
-#define INPUT4_GPIO_Port GPIOA
-#define INPUT3_Pin GPIO_PIN_11
-#define INPUT3_GPIO_Port GPIOA
-#define INPUT2_Pin GPIO_PIN_12
-#define INPUT2_GPIO_Port GPIOA
-#define INPUT1_Pin GPIO_PIN_15
-#define INPUT1_GPIO_Port GPIOA
-#define SCL_Pin GPIO_PIN_3
+#define KEY2_Pin GPIO_PIN_1
+#define KEY2_GPIO_Port GPIOC
+#define SCL_Pin GPIO_PIN_10
 #define SCL_GPIO_Port GPIOB
-#define SDA_Pin GPIO_PIN_4
+#define SDA_Pin GPIO_PIN_11
 #define SDA_GPIO_Port GPIOB
-#define DIR6OUT_Pin GPIO_PIN_6
-#define DIR6OUT_GPIO_Port GPIOB
-#define EN6OUT_Pin GPIO_PIN_8
-#define EN6OUT_GPIO_Port GPIOB
+#define JA2OUT_Pin GPIO_PIN_8
+#define JA2OUT_GPIO_Port GPIOD
+#define JD1OUT_Pin GPIO_PIN_10
+#define JD1OUT_GPIO_Port GPIOD
+#define DIR1OUT_Pin GPIO_PIN_11
+#define DIR1OUT_GPIO_Port GPIOD
+#define EN1OUT_Pin GPIO_PIN_13
+#define EN1OUT_GPIO_Port GPIOD
+#define DIR2OUT_Pin GPIO_PIN_15
+#define DIR2OUT_GPIO_Port GPIOD
+#define EN2OUT_Pin GPIO_PIN_7
+#define EN2OUT_GPIO_Port GPIOC
+#define DIR3OUT_Pin GPIO_PIN_9
+#define DIR3OUT_GPIO_Port GPIOC
+#define EN3OUT_Pin GPIO_PIN_9
+#define EN3OUT_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 

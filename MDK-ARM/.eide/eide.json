@@ -1,5 +1,5 @@
 {
-  "name": "Motion control card",
+  "name": "Dispensingmachine",
   "type": "ARM",
   "dependenceList": [],
   "srcDirs": [
@@ -18,7 +18,7 @@
             "name": "MDK-ARM",
             "files": [
               {
-                "path": "startup_stm32f103xe.s"
+                "path": "startup_stm32f407xx.s"
               }
             ],
             "folders": []
@@ -46,10 +46,10 @@
                     "path": "../Core/Src/usart.c"
                   },
                   {
-                    "path": "../Core/Src/stm32f1xx_it.c"
+                    "path": "../Core/Src/stm32f4xx_it.c"
                   },
                   {
-                    "path": "../Core/Src/stm32f1xx_hal_msp.c"
+                    "path": "../Core/Src/stm32f4xx_hal_msp.c"
                   }
                 ],
                 "folders": []
@@ -63,49 +63,55 @@
         "files": [],
         "folders": [
           {
-            "name": "STM32F1xx_HAL_Driver",
+            "name": "STM32F4xx_HAL_Driver",
             "files": [
               {
-                "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c"
+                "path": "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c"
               },
               {
-                "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c"
+                "path": "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c"
               },
               {
-                "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c"
+                "path": "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c"
               },
               {
-                "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c"
+                "path": "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c"
               },
               {
-                "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c"
+                "path": "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c"
               },
               {
-                "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c"
+                "path": "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c"
               },
               {
-                "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c"
+                "path": "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c"
               },
               {
-                "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c"
+                "path": "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c"
               },
               {
-                "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c"
+                "path": "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c"
               },
               {
-                "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c"
+                "path": "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c"
               },
               {
-                "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c"
+                "path": "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c"
               },
               {
-                "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c"
+                "path": "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c"
               },
               {
-                "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c"
+                "path": "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c"
               },
               {
-                "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c"
+                "path": "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c"
+              },
+              {
+                "path": "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c"
+              },
+              {
+                "path": "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c"
               }
             ],
             "folders": []
@@ -114,38 +120,28 @@
             "name": "CMSIS",
             "files": [
               {
-                "path": "../Core/Src/system_stm32f1xx.c"
+                "path": "../Core/Src/system_stm32f4xx.c"
               }
             ],
             "folders": []
           }
         ]
-      },
-      {
-        "name": "::CMSIS",
-        "files": [],
-        "folders": []
-      },
-      {
-        "name": "include.c",
-        "files": [],
-        "folders": []
       }
     ]
   },
   "outDir": "build",
-  "deviceName": "STM32F103RC",
-  "packDir": ".pack/Keil/STM32F1xx_DFP.2.3.0",
+  "deviceName": "STM32F407VETx",
+  "packDir": ".pack/Keil/STM32F4xx_DFP.2.14.0",
   "miscInfo": {
-    "uid": "2f7dd91181dd0b968758a4b987734475"
+    "uid": "a8fb51228f04883cb0aed8ae43f46246"
   },
   "targets": {
-    "Defective product detection": {
+    "Dispensingmachine": {
       "excludeList": [],
       "toolchain": "AC5",
       "compileConfig": {
-        "cpuType": "Cortex-M3",
-        "floatingPointHardware": "none",
+        "cpuType": "Cortex-M4",
+        "floatingPointHardware": "single",
         "scatterFilePath": "",
         "useCustomScatterFile": false,
         "storageLayout": {
@@ -184,8 +180,8 @@
               "tag": "IRAM",
               "id": 1,
               "mem": {
-                "startAddr": "0x20000000",
-                "size": "0x5000"
+                "startAddr": "",
+                "size": ""
               },
               "isChecked": true,
               "noInit": false
@@ -197,7 +193,7 @@
                 "startAddr": "0x0",
                 "size": "0x0"
               },
-              "isChecked": false,
+              "isChecked": true,
               "noInit": false
             }
           ],
@@ -236,8 +232,8 @@
               "tag": "IROM",
               "id": 1,
               "mem": {
-                "startAddr": "0x8000000",
-                "size": "0x10000"
+                "startAddr": "",
+                "size": ""
               },
               "isChecked": true,
               "isStartup": true
@@ -249,212 +245,7 @@
                 "startAddr": "0x0",
                 "size": "0x0"
               },
-              "isChecked": false,
-              "isStartup": false
-            }
-          ]
-        },
-        "options": "null"
-      },
-      "uploader": "STLink",
-      "uploadConfig": {
-        "bin": "",
-        "proType": "SWD",
-        "resetMode": "default",
-        "runAfterProgram": true,
-        "speed": 4000,
-        "address": "0x8000000",
-        "elFile": "None",
-        "optionBytes": ".eide/defective product detection.st.option.bytes.ini",
-        "otherCmds": ""
-      },
-      "uploadConfigMap": {
-        "JLink": {
-          "bin": "",
-          "baseAddr": "",
-          "cpuInfo": {
-            "vendor": "null",
-            "cpuName": "null"
-          },
-          "proType": 1,
-          "speed": 8000,
-          "otherCmds": ""
-        },
-        "STLink": {
-          "bin": "",
-          "proType": "SWD",
-          "resetMode": "default",
-          "runAfterProgram": true,
-          "speed": 4000,
-          "address": "0x8000000",
-          "elFile": "None",
-          "optionBytes": ".eide/defective product detection.st.option.bytes.ini",
-          "otherCmds": ""
-        },
-        "OpenOCD": {
-          "bin": "",
-          "target": "stm32f1x",
-          "interface": "stlink",
-          "baseAddr": "0x08000000"
-        }
-      },
-      "custom_dep": {
-        "name": "default",
-        "incList": [
-          ".",
-          "../Core/Inc",
-          "../Drivers/STM32F1xx_HAL_Driver/Inc",
-          "../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy",
-          "../Drivers/CMSIS/Device/ST/STM32F1xx/Include",
-          "../Drivers/CMSIS/Include",
-          "../Applications",
-          "RTE/_Defective product detection"
-        ],
-        "libList": [],
-        "defineList": [
-          "USE_HAL_DRIVER",
-          "STM32F103xB"
-        ]
-      },
-      "builderOptions": {
-        "AC5": {
-          "version": 4,
-          "beforeBuildTasks": [],
-          "afterBuildTasks": [],
-          "global": {
-            "use-microLIB": false,
-            "output-debug-info": "enable"
-          },
-          "c/cpp-compiler": {
-            "optimization": "level-3",
-            "one-elf-section-per-function": true,
-            "c99-mode": true,
-            "C_FLAGS": "--diag_suppress=1 --diag_suppress=1295",
-            "CXX_FLAGS": "--diag_suppress=1 --diag_suppress=1295",
-            "warnings": "all-warnings"
-          },
-          "asm-compiler": {},
-          "linker": {
-            "output-format": "elf",
-            "xo-base": "",
-            "ro-base": "",
-            "rw-base": ""
-          }
-        }
-      }
-    },
-    "Motion control card": {
-      "excludeList": [
-        "../Hardware/OLED.c"
-      ],
-      "toolchain": "AC5",
-      "compileConfig": {
-        "cpuType": "Cortex-M3",
-        "floatingPointHardware": "none",
-        "scatterFilePath": "",
-        "useCustomScatterFile": false,
-        "storageLayout": {
-          "RAM": [
-            {
-              "tag": "RAM",
-              "id": 1,
-              "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
-              },
-              "isChecked": false,
-              "noInit": false
-            },
-            {
-              "tag": "RAM",
-              "id": 2,
-              "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
-              },
-              "isChecked": false,
-              "noInit": false
-            },
-            {
-              "tag": "RAM",
-              "id": 3,
-              "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
-              },
-              "isChecked": false,
-              "noInit": false
-            },
-            {
-              "tag": "IRAM",
-              "id": 1,
-              "mem": {
-                "startAddr": "0x20000000",
-                "size": "0xc000"
-              },
               "isChecked": true,
-              "noInit": false
-            },
-            {
-              "tag": "IRAM",
-              "id": 2,
-              "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
-              },
-              "isChecked": false,
-              "noInit": false
-            }
-          ],
-          "ROM": [
-            {
-              "tag": "ROM",
-              "id": 1,
-              "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
-              },
-              "isChecked": false,
-              "isStartup": false
-            },
-            {
-              "tag": "ROM",
-              "id": 2,
-              "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
-              },
-              "isChecked": false,
-              "isStartup": false
-            },
-            {
-              "tag": "ROM",
-              "id": 3,
-              "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
-              },
-              "isChecked": false,
-              "isStartup": false
-            },
-            {
-              "tag": "IROM",
-              "id": 1,
-              "mem": {
-                "startAddr": "0x8000000",
-                "size": "0x40000"
-              },
-              "isChecked": true,
-              "isStartup": true
-            },
-            {
-              "tag": "IROM",
-              "id": 2,
-              "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
-              },
-              "isChecked": false,
               "isStartup": false
             }
           ]
@@ -479,42 +270,25 @@
           "proType": 1,
           "speed": 8000,
           "otherCmds": ""
-        },
-        "STLink": {
-          "bin": "",
-          "proType": "SWD",
-          "resetMode": "default",
-          "runAfterProgram": true,
-          "speed": 4000,
-          "address": "0x8000000",
-          "elFile": "None",
-          "optionBytes": ".eide/motion control card.st.option.bytes.ini",
-          "otherCmds": ""
-        },
-        "OpenOCD": {
-          "bin": "",
-          "target": "stm32f1x",
-          "interface": "stlink-v2",
-          "baseAddr": "0x08000000"
         }
       },
       "custom_dep": {
         "name": "default",
         "incList": [
-          ".",
           "../Core/Inc",
-          "../Drivers/STM32F1xx_HAL_Driver/Inc",
-          "../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy",
-          "../Drivers/CMSIS/Device/ST/STM32F1xx/Include",
+          "../Drivers/STM32F4xx_HAL_Driver/Inc",
+          "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+          "../Drivers/CMSIS/Device/ST/STM32F4xx/Include",
           "../Drivers/CMSIS/Include",
+          ".cmsis/include",
+          "RTE/_Dispensingmachine",
           "../Applications",
-          "../Hardware",
-          "RTE/_Motion control card"
+          "../Hardware"
         ],
         "libList": [],
         "defineList": [
           "USE_HAL_DRIVER",
-          "STM32F103xE"
+          "STM32F407xx"
         ]
       },
       "builderOptions": {
