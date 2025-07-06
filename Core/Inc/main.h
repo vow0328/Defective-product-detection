@@ -65,10 +65,10 @@ void Error_Handler(void);
 #define SCL_GPIO_Port GPIOB
 #define SDA_Pin GPIO_PIN_11
 #define SDA_GPIO_Port GPIOB
-#define JA2OUT_Pin GPIO_PIN_8
-#define JA2OUT_GPIO_Port GPIOD
-#define JD1OUT_Pin GPIO_PIN_10
-#define JD1OUT_GPIO_Port GPIOD
+#define JDOUT2_Pin GPIO_PIN_8
+#define JDOUT2_GPIO_Port GPIOD
+#define JDOUT1_Pin GPIO_PIN_10
+#define JDOUT1_GPIO_Port GPIOD
 #define DIR1OUT_Pin GPIO_PIN_11
 #define DIR1OUT_GPIO_Port GPIOD
 #define EN1OUT_Pin GPIO_PIN_13

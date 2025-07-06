@@ -126,6 +126,11 @@
             "folders": []
           }
         ]
+      },
+      {
+        "name": "::CMSIS",
+        "files": [],
+        "folders": []
       }
     ]
   },
@@ -180,8 +185,8 @@
               "tag": "IRAM",
               "id": 1,
               "mem": {
-                "startAddr": "",
-                "size": ""
+                "startAddr": "0x20000000",
+                "size": "0x1c000"
               },
               "isChecked": true,
               "noInit": false
@@ -190,8 +195,8 @@
               "tag": "IRAM",
               "id": 2,
               "mem": {
-                "startAddr": "0x0",
-                "size": "0x0"
+                "startAddr": "0x2001c000",
+                "size": "0x4000"
               },
               "isChecked": true,
               "noInit": false
@@ -232,8 +237,8 @@
               "tag": "IROM",
               "id": 1,
               "mem": {
-                "startAddr": "",
-                "size": ""
+                "startAddr": "0x8000000",
+                "size": "0x80000"
               },
               "isChecked": true,
               "isStartup": true
@@ -255,7 +260,7 @@
       "uploader": "OpenOCD",
       "uploadConfig": {
         "bin": "",
-        "target": "stm32f1x",
+        "target": "stm32f4x",
         "interface": "cmsis-dap",
         "baseAddr": "0x08000000"
       },
@@ -275,15 +280,15 @@
       "custom_dep": {
         "name": "default",
         "incList": [
+          ".",
           "../Core/Inc",
           "../Drivers/STM32F4xx_HAL_Driver/Inc",
           "../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
           "../Drivers/CMSIS/Device/ST/STM32F4xx/Include",
           "../Drivers/CMSIS/Include",
-          ".cmsis/include",
           "RTE/_Dispensingmachine",
-          "../Applications",
-          "../Hardware"
+          "../Hardware",
+          "../Applications"
         ],
         "libList": [],
         "defineList": [

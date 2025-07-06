@@ -1,7 +1,7 @@
 #ifndef _SCHEDULER_H_
 #define _SCHEDULER_H_
 
-#include "stm32f1xx_hal.h"
+#include "stm32f4xx_hal.h"
 #define TICK_PER_SECOND	1000
 #define TICK_US	(1000000/TICK_PER_SECOND)
 

@@ -1,5 +1,5 @@
-#include "stm32f1xx_hal.h"
-#include "stm32f1xx_hal_tim.h"
+#include "stm32f4xx_hal.h"
+#include "stm32f4xx_hal_tim.h"
 #include "main.h"
 #include "dma.h"
 #include "tim.h"
@@ -9,11 +9,11 @@
 #include "serial.h"
 #include "Scheduler.h"
 #include "control.h"
-#include "Photo_sensitive.h"
+//#include "Photo_sensitive.h"
 #include "led.h"
+#include "H_Oled.h"
 
-
-#define MOTOR_NUM 7  // 电机编号从 1~6，索引0不使用
+#define MOTOR_NUM 4  // 电机编号从 1~6，索引0不使用
 
 extern TIM_HandleTypeDef* motor_htim[MOTOR_NUM];
 extern uint32_t motor_channel[MOTOR_NUM];
