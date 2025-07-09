@@ -151,9 +151,13 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
       {
         Serial3_RxPacket[pRxPacket++] = Serial3_RxData;
       }
+      else if (Serial3_RxData == 0xFE && pRxPacket == 1)//防止出现数据内容为FE的情况
+      {
+        Serial3_RxPacket[pRxPacket++] = Serial3_RxData;
+      }
       else if (Serial3_RxData == 0xFE)
       {
-        // Serial3_SendByte(0xAC);
+       // Serial3_SendByte(0xAC);
         RxState = 0;
         pRxPacket = 0;
         Serial3_RxFlag = 1;

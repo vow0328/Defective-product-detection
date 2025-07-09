@@ -18,10 +18,10 @@ void Command_Control(void)
         break;
     case 0x02:                           // 输出控制
         Serial3_GetRxPacket(Command, 1); // 读取串口下一步指令
-        uint8_t Led_num = Command[0];
+        uint8_t ouput_num = Command[0];
         for (uint8_t i = 1; i <= 8; i++)
         {
-            led_control(i, (Led_num & (1 << (i - 1)))); // 八位输出控制
+            OUTPUT_control(i, (ouput_num & (1 << (i - 1)))); // 八位输出控制
         }
         break;
     default: // 错误数据不处理

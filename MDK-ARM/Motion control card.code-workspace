@@ -18,7 +18,8 @@
             "h_tmc2209.h": "c",
             "scheduler.h": "c",
             "control.h": "c",
-            "gpio.h": "c"
+            "gpio.h": "c",
+            "stm32f1xx_hal_tim.h": "c"
         }
     },
     "extensions": {}

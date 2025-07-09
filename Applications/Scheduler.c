@@ -26,7 +26,7 @@ static void Loop_20Hz(void) // 50ms执行一次
 
 static void Loop_10Hz(void) // 100ms执行一次
 {
-    send_Photo_sensor(); // 发送输入传感器数据
+    Send_INPUT(); // 发送输入传感器数据
 }
 static void Loop_2Hz(void) // 500ms执行一次
 {

@@ -9,13 +9,15 @@
 #include "serial.h"
 #include "Scheduler.h"
 #include "control.h"
-#include "Photo_sensitive.h"
-#include "led.h"
+#include "input.h"
+#include "output.h"
 
 
-#define MOTOR_NUM 7  // 电机编号从 1~6，索引0不使用
-
-extern TIM_HandleTypeDef* motor_htim[MOTOR_NUM];
-extern uint32_t motor_channel[MOTOR_NUM];
-extern GPIO_TypeDef* motor_en_port[MOTOR_NUM];
-extern uint16_t motor_en_pin[MOTOR_NUM];
+extern TIM_HandleTypeDef *motor_htim[];
+extern uint32_t motor_channel[];
+extern GPIO_TypeDef *motor_en_port[];
+extern uint16_t motor_en_pin[];
+extern GPIO_TypeDef *input_ports[];
+extern uint16_t input_pins[];
+extern GPIO_TypeDef *output_ports[];
+extern uint16_t output_pins[];
