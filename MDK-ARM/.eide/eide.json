@@ -459,7 +459,8 @@
             }
           ]
         },
-        "options": "null"
+        "options": "null",
+        "archExtensions": ""
       },
       "uploader": "OpenOCD",
       "uploadConfig": {
@@ -545,5 +546,5 @@
       }
     }
   },
-  "version": "3.5"
+  "version": "3.6"
 }

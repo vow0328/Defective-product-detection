@@ -14,8 +14,22 @@ uint8_t Serial3_RxFlag;
  */
 void Serial_Init(void)
 {
-  // 启用接收中断
-  HAL_UART_Receive_DMA(&huart3, &Serial3_RxData, 1);
+  // 1. 停止DMA接收
+  HAL_UART_DMAStop(&huart3);
+
+  // 2. 清除所有错误标志（防止因噪声、溢出等引发问题）
+  __HAL_UART_CLEAR_OREFLAG(&huart3); // 溢出错误
+  __HAL_UART_CLEAR_NEFLAG(&huart3);  // 噪声错误
+  __HAL_UART_CLEAR_FEFLAG(&huart3);  // 帧错误
+  __HAL_UART_CLEAR_PEFLAG(&huart3);  // 奇偶校验错误
+
+  // 3. 读取并丢弃残留数据（如果有）
+  while (__HAL_UART_GET_FLAG(&huart3, UART_FLAG_RXNE))
+  {
+    volatile uint8_t temp = (uint8_t)(huart3.Instance->DR);
+  }
+
+  HAL_UART_Receive_DMA(&huart3, &Serial3_RxData, 1); // 重启DMA接收
 }
 
 /**
@@ -151,13 +165,13 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
       {
         Serial3_RxPacket[pRxPacket++] = Serial3_RxData;
       }
-      else if (Serial3_RxData == 0xFE && pRxPacket == 1)//防止出现数据内容为FE的情况
+      else if (Serial3_RxData == 0xFE && pRxPacket == 1) // 防止出现数据内容为FE的情况
       {
         Serial3_RxPacket[pRxPacket++] = Serial3_RxData;
       }
       else if (Serial3_RxData == 0xFE)
       {
-       // Serial3_SendByte(0xAC);
+        // Serial3_SendByte(0xAC);
         RxState = 0;
         pRxPacket = 0;
         Serial3_RxFlag = 1;
