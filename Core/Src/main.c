@@ -115,12 +115,18 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    // Motor_Set(1, 2, 1, 1600,200,3200,100);
-    // Motor_Set(2, 2, 1, 1600,200,3200,100);
+    // Motor_Set(1, 2, 1, 1600, 200, 3200, 100);
+    // Motor_Set(2, 2, 1, 1600, 200, 3200, 100);
+    // Motor_Set(3, 2, 1, 1600, 200, 3200, 100);
+    // Motor_Set(4, 2, 1, 1600, 200, 3200, 100);
+    // Motor_Set(5, 2, 1, 1600, 200, 3200, 100);
+    // Motor_Set(6, 2, 1, 1600, 200, 3200, 100);
     // HAL_Delay(4000);
-    // OUTPUT_control(1, 1);
+    // for (int i = 0; i < 8; i++)
+    //   OUTPUT_control(i + 1, 1);
     // HAL_Delay(500);
-    // OUTPUT_control(1, 0);`
+    // for (int i = 0; i < 8; i++)
+    //   OUTPUT_control(i+1, 0);
     // HAL_Delay(500);
     Scheduler_Run(); // 任务调度
   }

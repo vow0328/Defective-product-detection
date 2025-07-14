@@ -19,26 +19,23 @@ void Motor_Set(uint8_t num, uint8_t mode, GPIO_PinState dir, uint16_t hz, uint16
     {
     case Constant_speed: // 定速模式
         Motor[num].mode = Constant_speed;
+        Motor[num].hz = hz;
         break;
     case Constant_step: // 定步模式
         Motor[num].mode = Constant_step;
+        stepper_init(&Motor[num], vstart, vmax, vacc, hz);
+        // Motor[num].hz = get_step_speed(Motor[num].current_step, Motor[num].steps, Motor[num].velocity);
+        Motor[num].hz = 800;
         break;
     case STOP_mode: // 停止模式
         Motor[num].mode = STOP_mode;
         Motor[num].en = 0;
+        Motor[num].hz = 0;
+        HAL_TIM_Base_Stop_IT(motor_tim[num]);
+        HAL_TIM_PWM_Stop(motor_tim[num], motor_channel[num]);
         break;
     default:
         break;
-    }
-    if (Motor[num].mode == Constant_speed)
-    {
-        Motor[num].hz = hz;
-    }
-    else if (Motor[num].mode == Constant_step)
-    {
-        stepper_init(&Motor[num], vstart, vmax, vacc, hz);
-        // Motor[num].hz = get_step_speed(Motor[num].current_step, Motor[num].steps, Motor[num].velocity);
-        Motor[num].hz = 800;
     }
     Motor[num].dir = dir;
     Motor[num].arr = (TIMER_CLK_HZ / Motor[num].hz) - 1;
