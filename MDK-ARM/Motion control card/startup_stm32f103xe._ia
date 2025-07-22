@@ -1,6 +1,0 @@
---cpu Cortex-M3 -g --apcs=interwork 
--I.\RTE\_Motion_control_card
--IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include
--IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include
---pd "__UVISION_VERSION SETA 524" --pd "_RTE_ SETA 1" --pd "STM32F10X_HD SETA 1"
---list startup_stm32f103xe.lst --xref -o "motion control card\startup_stm32f103xe.o" --depend "motion control card\startup_stm32f103xe.d" "startup_stm32f103xe.s"
