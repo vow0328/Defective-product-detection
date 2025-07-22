@@ -2,11 +2,13 @@
 #include "usart.h"
 #include <stdio.h>
 #include <stdarg.h>
+#include <string.h>
 
 uint8_t Serial3_RxData; // 定义串口接收的数据变量
 uint8_t Serial3_RxPacket[10];
 uint8_t Serial3_RxFlag;
 
+QueueHandle_t serial3PacketQueue; // 串口3的包队列
 /**
  * 函数：USART初始化函数
  * 参 数：无
@@ -26,10 +28,19 @@ void Serial_Init(void)
   // 3. 读取并丢弃残留数据（如果有）
   while (__HAL_UART_GET_FLAG(&huart3, UART_FLAG_RXNE))
   {
-    volatile uint8_t temp = (uint8_t)(huart3.Instance->DR);
+    (void)(huart3.Instance->DR);
   }
 
   HAL_UART_Receive_DMA(&huart3, &Serial3_RxData, 1); // 重启DMA接收
+                                                     // 使能空闲中断
+  __HAL_UART_ENABLE_IT(&huart3, UART_IT_IDLE);
+
+  // 初始化串口3的数据队列
+  serial3PacketQueue = xQueueCreate(SERIAL_PACKET_QUEUE_SIZE, sizeof(SerialPacket));
+  if (serial3PacketQueue == NULL)
+  {
+    Error_Handler(); // 队列创建失败，可添加错误处理
+  }
 }
 
 /**
@@ -99,6 +110,7 @@ void Serial3_SendNumber(uint32_t Number, uint8_t Length)
  */
 int fputc3(int ch, FILE *f)
 {
+  (void)f;              // 显式标记未使用的参数
   Serial3_SendByte(ch); // 将printf的底层重定向到自己的发送字节函数
   return ch;
 }
@@ -126,12 +138,7 @@ void Serial3_Printf(char *format, ...)
  */
 uint8_t Serial3_GetRxData(void)
 {
-  if (Serial3_RxFlag == 1)
-  {
-    Serial3_RxFlag = 0;
-    return Serial3_RxPacket[0]; // 返回接收的数据变量
-  }
-  return 0;
+  return Serial3_RxPacket[0]; // 返回接收的数据变量
 }
 
 /**
@@ -141,7 +148,7 @@ uint8_t Serial3_GetRxData(void)
  */
 void Serial3_GetRxPacket(uint8_t *buf, size_t n)
 {
-  for (int i = 0; i < n; i++)
+  for (size_t i = 0; i < n; i++)
   {
     buf[i] = Serial3_RxPacket[i + 1];
   }
@@ -171,10 +178,21 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
       }
       else if (Serial3_RxData == 0xFE)
       {
-        // Serial3_SendByte(0xAC);
+        // 接收到包尾，构造完整数据包
+        SerialPacket packet;
+        memcpy(packet.data, Serial3_RxPacket, pRxPacket);
+        packet.len = pRxPacket;
+
+        // 发送到队列
+        BaseType_t TaskWoken = pdFALSE;
+        xQueueSendFromISR(serial3PacketQueue, &packet, &TaskWoken);
+
+        // 请求任务切换
+        portYIELD_FROM_ISR(TaskWoken);
+
+        // 重置接收状态
         RxState = 0;
         pRxPacket = 0;
-        Serial3_RxFlag = 1;
       }
     }
     if (Serial3_RxData == 0xFF)

@@ -23,6 +23,7 @@ typedef struct {
 } MotorStruct;
 
 // 外部声明全局数组
+extern MotorStruct Motor[10];
 extern GPIO_TypeDef *en_ports[];
 extern uint16_t en_pins[];
 extern GPIO_TypeDef *dir_port[];

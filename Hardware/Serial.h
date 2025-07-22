@@ -1,7 +1,16 @@
 #ifndef __SERIAL_H
 #define __SERIAL_H
 
-#include <stdio.h>
+#define SERIAL_PACKET_QUEUE_SIZE 10
+#define SERIAL_PACKET_MAX_LEN 64
+
+typedef struct
+{
+  uint8_t data[SERIAL_PACKET_MAX_LEN];
+  uint8_t len;
+} SerialPacket;
+
+extern QueueHandle_t serial3PacketQueue; // 串口3的包队列
 
 void Serial_Init(void);
 void Serial3_SendByte(uint8_t Byte);

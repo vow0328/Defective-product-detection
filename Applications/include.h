@@ -9,8 +9,9 @@
 #include "control.h"
 #include "input.h"
 #include "output.h"
+#include "FreeRTOS.h"
 
-
+extern QueueHandle_t serial3PacketQueue; // 串口3的包队列
 extern TIM_HandleTypeDef *motor_htim[];
 extern uint32_t motor_channel[];
 extern GPIO_TypeDef *motor_en_port[];
