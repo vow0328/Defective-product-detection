@@ -18,7 +18,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "cmsis_os.h"
 #include "dma.h"
 #include "tim.h"
 #include "usart.h"
@@ -52,7 +51,6 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -95,31 +93,42 @@ int main(void)
   MX_TIM1_Init();
   MX_TIM2_Init();
   MX_TIM8_Init();
+  MX_UART5_Init();
   MX_USART3_UART_Init();
-  MX_USART2_UART_Init();
+  MX_TIM3_Init();
+  MX_TIM5_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-  // OLED_Init();
-  // W25Q64_Init();
+  HAL_Delay(10000);
+  OUTPUT_init();
+  Scheduler_Setup(); // 初始化任务调度
   Serial_Init();
-  //HAL_Delay(1000);
-  Motor_Init();
   /* USER CODE END 2 */
-
-  /* Call init function for freertos objects (in cmsis_os2.c) */
-  MX_FREERTOS_Init();
-
-  /* Start scheduler */
-  osKernelStart();
-
-  /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  // Motor_Set(1, 1, 1, 1600);
+  // Motor_SetSpeed(1,1,1);
+
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    // Motor_Set(1, 2, 1, 1600, 200, 3200, 100);
+    // Motor_Set(2, 2, 1, 1600, 200, 3200, 100);
+    // Motor_Set(3, 2, 1, 1600, 200, 3200, 100);
+    // Motor_Set(4, 2, 1, 1600, 200, 3200, 100);
+    // Motor_Set(5, 2, 1, 1600, 200, 3200, 100);
+    // Motor_Set(6, 2, 1, 1600, 200, 3200, 100);
+    // HAL_Delay(4000);
+    // for (int i = 0; i < 8; i++)
+    //   OUTPUT_control(i + 1, 1);
+    // HAL_Delay(500);
+    // for (int i = 0; i < 8; i++)
+    //   OUTPUT_control(i+1, 0);
+    // HAL_Delay(500);
+    Scheduler_Run(); // 任务调度
   }
   /* USER CODE END 3 */
 }
