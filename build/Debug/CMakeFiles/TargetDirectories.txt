@@ -1,0 +1,7 @@
+D:/project/stm32/Motion control card/build/Debug/CMakeFiles/Motion_Control_Card.dir
+D:/project/stm32/Motion control card/build/Debug/CMakeFiles/edit_cache.dir
+D:/project/stm32/Motion control card/build/Debug/CMakeFiles/rebuild_cache.dir
+D:/project/stm32/Motion control card/build/Debug/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir
+D:/project/stm32/Motion control card/build/Debug/cmake/stm32cubemx/CMakeFiles/FreeRTOS.dir
+D:/project/stm32/Motion control card/build/Debug/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+D:/project/stm32/Motion control card/build/Debug/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir

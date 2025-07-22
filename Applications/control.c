@@ -1,6 +1,6 @@
 #include "include.h"
 uint8_t Command[5];
-void Command_Control(void)
+void Control_task(void)
 {
     uint8_t Motor, motion, dir;
     uint16_t pulses;
@@ -27,4 +27,5 @@ void Command_Control(void)
     default: // 错误数据不处理
         break;
     }
+    osdelay(1);
 }
