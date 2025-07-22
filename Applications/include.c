@@ -79,7 +79,6 @@ GPIO_TypeDef *input_ports[INPUT_SENSOR_COUNT + 1] = {
     INPUT8_GPIO_Port,
 };
 
-// INPUT 引脚号定义数组（下标从 1 开始，0 占位）
 uint16_t input_pins[INPUT_SENSOR_COUNT + 1] = {
     0, // 索引0不使用
     INPUT1_Pin,
@@ -92,7 +91,7 @@ uint16_t input_pins[INPUT_SENSOR_COUNT + 1] = {
     INPUT8_Pin,
 };
 
-// LED GPIO 端口定义数组（下标从 1 开始，0 占位）
+// OUTPUT 端口定义数组（下标从 1 开始，0 占位）
 GPIO_TypeDef *output_ports[OUTPUT_SENSOR_COUNT + 1] = {
     NULL, // 索引0不使用
     OUTPUT1_GPIO_Port,
@@ -105,7 +104,6 @@ GPIO_TypeDef *output_ports[OUTPUT_SENSOR_COUNT + 1] = {
     OUTPUT8_GPIO_Port,
 };
 
-// LED GPIO 引脚号定义数组（下标从 1 开始，0 占位）
 uint16_t output_pins[OUTPUT_SENSOR_COUNT + 1] = {
     0, // 索引0不使用
     OUTPUT1_Pin,

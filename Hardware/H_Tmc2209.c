@@ -2,7 +2,7 @@
 
 MotorStruct Motor[10] = {0};
 
-void stepper_init(MotorStruct *motor, uint16_t v_start, uint16_t v_max, uint16_t acc, uint16_t steps)
+void stepper_init(MotorStruct *motor, uint16_t v_start, uint16_t v_max, uint16_t acc, uint16_t steps) // 加速度算法初始化
 {
     motor->velocity.v_start = v_start;
     motor->velocity.v_max = v_max;
@@ -31,14 +31,14 @@ void Motor_Set(uint8_t num, uint8_t mode, GPIO_PinState dir, uint16_t hz, uint16
         Motor[num].mode = STOP_mode;
         Motor[num].en = 0;
         Motor[num].hz = 0;
-        HAL_TIM_Base_Stop_IT(motor_tim[num]);
+        HAL_TIM_Base_Stop_IT(motor_tim[num]); // 关闭pwm波和定时器
         HAL_TIM_PWM_Stop(motor_tim[num], motor_channel[num]);
         break;
     default:
         break;
     }
     Motor[num].dir = dir;
-    Motor[num].arr = (TIMER_CLK_HZ / Motor[num].hz) - 1;
+    Motor[num].arr = (TIMER_CLK_HZ / Motor[num].hz) - 1; // 更新定时器
     Motor_SetSpeed(num);
 }
 
@@ -67,24 +67,18 @@ uint16_t Motor_GetStep(uint8_t num) // 细分步数为1  脉冲大概为180度
     {
     case 1:
         return Motor[1].current_step;
-        break;
     case 2:
         return Motor[2].current_step;
-        break;
     case 3:
         return Motor[3].current_step;
-        break;
     case 4:
         return Motor[4].current_step;
-        break;
     case 5:
         return Motor[5].current_step;
-        break;
     case 6:
         return Motor[6].current_step;
-        break;
     default:
-        return -1;
+        return false;
     }
 }
 
@@ -101,15 +95,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
                 {
                     Motor[i].current_step = 0;
                     Motor[i].target_step = 0;
-                    HAL_GPIO_WritePin(en_ports[i], en_pins[i], GPIO_PIN_RESET);
+                    HAL_GPIO_WritePin(en_ports[i], en_pins[i], GPIO_PIN_RESET);//使能引脚,pwm,定时器关闭
                     HAL_TIM_Base_Stop_IT(motor_tim[i]);
                     HAL_TIM_PWM_Stop(motor_tim[i], motor_channel[i]);
                 }
                 // else
                 // {
-                //     Motor[i].hz = get_step_speed(Motor[i].current_step, Motor[i].steps, Motor[i].velocity);
+                //     Motor[i].hz = get_step_speed(Motor[i].current_step, Motor[i].steps, Motor[i].velocity);//获取预计速度
                 //     uint16_t arr = (TIMER_CLK_HZ / Motor[i].hz) - 1;
-                //     __HAL_TIM_SET_AUTORELOAD(motor_tim[i], arr);
+                //     __HAL_TIM_SET_AUTORELOAD(motor_tim[i], arr);//更新定时器
                 //     __HAL_TIM_SET_COMPARE(motor_tim[i], motor_channel[i], arr / 2);
                 //     __HAL_TIM_SET_COUNTER(motor_tim[i], 0);
                 // }
