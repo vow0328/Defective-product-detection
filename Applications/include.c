@@ -74,8 +74,8 @@ GPIO_TypeDef *input_ports[INPUT_SENSOR_COUNT + 1] = {
     INPUT3_GPIO_Port,
     INPUT4_GPIO_Port,
     INPUT5_GPIO_Port,
-    INPUT6_GPIO_Port,
-    INPUT7_GPIO_Port,
+    0,
+    0,
     INPUT8_GPIO_Port,
 };
 
@@ -86,8 +86,8 @@ uint16_t input_pins[INPUT_SENSOR_COUNT + 1] = {
     INPUT3_Pin,
     INPUT4_Pin,
     INPUT5_Pin,
-    INPUT6_Pin,
-    INPUT7_Pin,
+    0,
+    0,
     INPUT8_Pin,
 };
 
@@ -96,22 +96,12 @@ GPIO_TypeDef *output_ports[OUTPUT_SENSOR_COUNT + 1] = {
     NULL, // 索引0不使用
     OUTPUT1_GPIO_Port,
     OUTPUT2_GPIO_Port,
-    OUTPUT3_GPIO_Port,
-    OUTPUT4_GPIO_Port,
-    OUTPUT5_GPIO_Port,
-    OUTPUT6_GPIO_Port,
-    OUTPUT7_GPIO_Port,
-    OUTPUT8_GPIO_Port,
+    
 };
 
 uint16_t output_pins[OUTPUT_SENSOR_COUNT + 1] = {
     0, // 索引0不使用
     OUTPUT1_Pin,
     OUTPUT2_Pin,
-    OUTPUT3_Pin,
-    OUTPUT4_Pin,
-    OUTPUT5_Pin,
-    OUTPUT6_Pin,
-    OUTPUT7_Pin,
-    OUTPUT8_Pin,
+    
 };
