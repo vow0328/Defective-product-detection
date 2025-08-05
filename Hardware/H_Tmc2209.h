@@ -4,22 +4,24 @@
 #include "gpio.h"
 #include "math.h"
 
-typedef enum {
+typedef enum
+{
     Constant_speed = 1, // 恒速模式
     Constant_step = 2,  // 定步模式
     STOP_mode = 3       // 停止模式
 } MotorMode;
 
-typedef struct {
+typedef struct
+{
     uint8_t mode;
     uint8_t en;
     GPIO_PinState dir;
-    uint16_t hz;
+    uint16_t hz; // 速度
     uint16_t current_step;
     uint16_t target_step;
-    uint16_t arr;
-    MotionStep steps;
-    TrapezoidVelocity velocity;
+    uint16_t arr;               // 定时器自动重装值
+    MotionStep steps;           // 加速度步段
+    TrapezoidVelocity velocity; // 加速度数值
 } MotorStruct;
 
 // 外部声明全局数组
@@ -40,7 +42,7 @@ extern uint32_t motor_channel[];
 
 void stepper_init(MotorStruct *Motor, uint16_t v_start, uint16_t v_max, uint16_t acc, uint16_t steps);
 
-void Motor_Set(uint8_t num, uint8_t mode, GPIO_PinState dir, uint16_t hz,uint16_t vstart,uint16_t vmax,uint16_t acc);
+void Motor_Set(uint8_t num, uint8_t mode, GPIO_PinState dir, uint16_t hz, uint16_t vstart, uint16_t vmax, uint16_t acc);
 void Motor_SetSpeed(uint8_t num);
 
 uint16_t Motor_GetStep(uint8_t num);

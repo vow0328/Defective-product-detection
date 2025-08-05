@@ -125,11 +125,6 @@
         "name": "::CMSIS",
         "files": [],
         "folders": []
-      },
-      {
-        "name": "include.c",
-        "files": [],
-        "folders": []
       }
     ]
   },
@@ -344,9 +339,7 @@
       }
     },
     "Motion control card": {
-      "excludeList": [
-        "../Hardware/OLED.c"
-      ],
+      "excludeList": [],
       "toolchain": "AC5",
       "compileConfig": {
         "cpuType": "Cortex-M3",
@@ -510,6 +503,7 @@
           "../Drivers/CMSIS/Include",
           "../Applications",
           "../Hardware",
+          ".cmsis/include",
           "RTE/_Motion control card"
         ],
         "libList": [],
@@ -537,6 +531,9 @@
           },
           "asm-compiler": {},
           "linker": {
+            "$outputTaskExcludes": [
+              ".bin"
+            ],
             "output-format": "elf",
             "xo-base": "",
             "ro-base": "",

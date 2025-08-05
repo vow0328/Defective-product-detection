@@ -95,7 +95,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
                 {
                     Motor[i].current_step = 0;
                     Motor[i].target_step = 0;
-                    HAL_GPIO_WritePin(en_ports[i], en_pins[i], GPIO_PIN_RESET);//使能引脚,pwm,定时器关闭
+                    //HAL_GPIO_WritePin(en_ports[i], en_pins[i], GPIO_PIN_RESET);//失能引脚,pwm,定时器关闭
                     HAL_TIM_Base_Stop_IT(motor_tim[i]);
                     HAL_TIM_PWM_Stop(motor_tim[i], motor_channel[i]);
                 }
