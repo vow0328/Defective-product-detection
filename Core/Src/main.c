@@ -107,27 +107,26 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  // Motor_Set(1, 1, 1, 1600);
-  // Motor_SetSpeed(1,1,1);
-
+  // Motor_Set(6, 1, 1, 1600, 0, 0, 0);
+  //  Motor_SetSpeed(1,1,1);
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    // Motor_Set(1, 2, 1, 1600, 200, 3200, 100);
-    // Motor_Set(2, 2, 1, 1600, 200, 3200, 100);
-    // Motor_Set(3, 2, 1, 1600, 200, 3200, 100);
-    // Motor_Set(4, 2, 1, 1600, 200, 3200, 100);
-    // Motor_Set(5, 2, 1, 1600, 200, 3200, 100);
-    // Motor_Set(6, 2, 1, 1600, 200, 3200, 100);
-    // HAL_Delay(4000);
-    // for (int i = 0; i < 8; i++)
-    //   OUTPUT_control(i + 1, 1);
-    // HAL_Delay(500);
-    // for (int i = 0; i < 8; i++)
-    //   OUTPUT_control(i+1, 0);
-    // HAL_Delay(500);
+    // Motor_Set(1, 2, 1, 8000, 800, 3200, 2400);
+    //   Motor_Set(2, 2, 1, 1600, 200, 3200, 100);
+    //   Motor_Set(3, 2, 1, 1600, 200, 3200, 100);
+    //   Motor_Set(4, 2, 1, 1600, 200, 3200, 100);
+    //   Motor_Set(5, 2, 1, 1600, 200, 3200, 100);
+    //   Motor_Set(6, 2, 1, 1600, 200, 3200, 100);
+    // HAL_Delay(8000);
+    //   for (int i = 0; i < 8; i++)
+    //     OUTPUT_control(i + 1, 1);
+    //   HAL_Delay(500);
+    //   for (int i = 0; i < 8; i++)
+    //     OUTPUT_control(i+1, 0);
+    //   HAL_Delay(500);
     Scheduler_Run(); // 任务调度
   }
   /* USER CODE END 3 */

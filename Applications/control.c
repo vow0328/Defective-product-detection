@@ -4,7 +4,7 @@ void Command_Control(void)
 {
     uint8_t Motor, motion, dir;
     uint16_t pulses;
-    uint16_t vstart = 200, vmax = 1600, vacc = 100;
+    uint16_t vstart = 800, vmax = 3200, vacc = 2400;
     uint8_t flag = Serial3_GetRxData(); // 读取串口状态
     switch (flag)
     {

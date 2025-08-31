@@ -488,7 +488,7 @@
         "OpenOCD": {
           "bin": "",
           "target": "stm32f1x",
-          "interface": "stlink-v2",
+          "interface": "cmsis-dap",
           "baseAddr": "0x08000000"
         }
       },
