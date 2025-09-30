@@ -490,6 +490,14 @@
           "target": "stm32f1x",
           "interface": "cmsis-dap",
           "baseAddr": "0x08000000"
+        },
+        "pyOCD": {
+          "bin": "",
+          "targetName": "cortex_m",
+          "baseAddr": "0x08000000",
+          "speed": "4M",
+          "config": ".eide/motion control card.pyocd.yaml",
+          "otherCmds": ""
         }
       },
       "custom_dep": {

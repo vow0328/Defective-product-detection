@@ -11,7 +11,7 @@
 #include "control.h"
 #include "input.h"
 #include "output.h"
-
+#include "pvd.h"
 
 extern TIM_HandleTypeDef *motor_htim[];
 extern uint32_t motor_channel[];

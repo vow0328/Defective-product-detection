@@ -98,8 +98,8 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : EN4OUT_Pin DIR3OUT_Pin DIR6OUT_Pin */
-  GPIO_InitStruct.Pin = EN4OUT_Pin|DIR3OUT_Pin|DIR6OUT_Pin;
+  /*Configure GPIO pins : EN4OUT_Pin DIR3OUT_Pin DIR6OUT_Pin EN6OUT_Pin */
+  GPIO_InitStruct.Pin = EN4OUT_Pin|DIR3OUT_Pin|DIR6OUT_Pin|EN6OUT_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
@@ -123,13 +123,6 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : EN6OUT_Pin */
-  GPIO_InitStruct.Pin = EN6OUT_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-  HAL_GPIO_Init(EN6OUT_GPIO_Port, &GPIO_InitStruct);
 
 }
 
