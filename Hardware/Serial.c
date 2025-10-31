@@ -115,7 +115,9 @@ uint8_t Serial2_GetRxData(void)
   if (Serial2_RxFlag == 1)
   {
     Serial2_RxFlag = 0;
-    return Serial2_RxPacket[0]; // 返回接收的数据变量
+    uint8_t flag = Serial2_RxPacket[0];
+    Serial2_RxPacket[0] = 0;
+    return flag; // 返回接收的数据变量
   }
   return 0;
 }
@@ -153,10 +155,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
       }
       else if (Serial2_RxData == 0xFE)
       {
-        // Serial2_SendByte(0xAC);
+        
         RxState = 0;
         pRxPacket = 0;
         Serial2_RxFlag = 1;
+        //Serial2_SendByte(0xac);
       }
     }
     if (Serial2_RxData == 0xFF)

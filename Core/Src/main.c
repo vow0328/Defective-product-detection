@@ -98,24 +98,33 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_Delay(500);
   Serial_Init();
-  // OLED_Init();
+  OLED_Init();
   led_init();
-  Scheduler_Setup(); // 初始化任务调度
+  Scheduler_Setup();                         // 初始化任务调度
+  //Motor_Set(1, 2, 0, 8000, 200, 3200, 1000); // 针管向下 1600+1600+1600+1600
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  // Motor_Set(1, 1, 1, 1600, 200, 3200, 100);
-  // Motor_Set(2, 1, 1, 1600, 200, 3200, 100);
-  // Motor_Set(3, 1, 1, 1600, 200, 3200, 100);
+  // OLED_ShowString(1,1,"hellO");
+  //  Motor_Set(1, 1, 1, 1600, 200, 3200, 100);
+  //  Motor_Set(2, 1, 1, 1600, 200, 3200, 100);
+  //  Motor_Set(3, 1, 1, 1600, 200, 3200, 100);
+
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    // Motor_Set(1, 2, 1, 1600,200,3200,100);
-    // HAL_Delay(4000);
-    Scheduler_Run();//任务调度
+    // Motor_Set(1, 2, 0, 1600,400,2400,800);
+    // Motor_Set(2, 2, 0, 1600,400,2400,800);
+    // Motor_Set(3, 2, 0, 1600,400,2400,800);
+    // HAL_Delay(3000);
+    // led_control(1,1);
+    // HAL_Delay(500);
+    // led_control(1,0);
+    // HAL_Delay(500);
+    Scheduler_Run(); // 任务调度
   }
   /* USER CODE END 3 */
 }
@@ -183,7 +192,6 @@ void Error_Handler(void)
   }
   /* USER CODE END Error_Handler_Debug */
 }
-
 #ifdef USE_FULL_ASSERT
 /**
  * @brief  Reports the name of the source file and the source line number

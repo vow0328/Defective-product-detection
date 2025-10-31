@@ -9,7 +9,6 @@
 #include "serial.h"
 #include "Scheduler.h"
 #include "control.h"
-//#include "Photo_sensitive.h"
 #include "led.h"
 #include "H_Oled.h"
 

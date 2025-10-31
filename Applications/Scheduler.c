@@ -26,11 +26,11 @@ static void Loop_20Hz(void) // 50ms执行一次
 
 static void Loop_10Hz(void) // 100ms执行一次
 {
-    //send_Photo_sensor(); // 发送输入传感器数据
+    // send_Photo_sensor(); // 发送输入传感器数据
 }
 static void Loop_2Hz(void) // 500ms执行一次
 {
-    // Serial3_SendByte(0xaa);
+    //Serial2_SendByte(0xaa);
 }
 // 系统任务配置，创建不同执行频率的“线程”
 static sched_task_t sched_tasks[] =
@@ -83,4 +83,3 @@ void Scheduler_Run(void)
     }
 }
 
-/******************* (C) COPYRIGHT 2014 ANO TECH *****END OF FILE************/
