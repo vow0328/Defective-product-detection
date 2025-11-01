@@ -28,7 +28,7 @@ void Command_Control(void)
         }
         if (dy < 0)
         {
-            Motor_Set(2, 2, 0, 1200 * (-dy), vstart, vmax, vacc);
+            Motor_Set(2, 2, 1, 1200 * (-dy), vstart, vmax, vacc);
         }
         else if (dy > 0)
         {
@@ -77,7 +77,7 @@ void Command_Control(void)
             }
             if (j < 1)
             {
-                Motor_Set(2, 2, 0, 0x500, vstart, vmax, vacc); // 向前5mm
+                Motor_Set(2, 2, 1, 0x500, vstart, vmax, vacc); // 向前5mm
                 HAL_Delay(2000);
             }
         }
@@ -102,7 +102,7 @@ void Command_Control(void)
             }
             if (j < 1)
             {
-                Motor_Set(2, 2, 0, 0x500, vstart, vmax, vacc); // 向前5mm
+                Motor_Set(2, 2, 1, 0x500, vstart, vmax, vacc); // 向前5mm
                 HAL_Delay(2000);
             }
         }
@@ -127,7 +127,7 @@ void Command_Control(void)
             }
             if (j < 1)
             {
-                Motor_Set(2, 2, 0, 0x500, vstart, vmax, vacc); // 向前5mm
+                Motor_Set(2, 2, 1, 0x500, vstart, vmax, vacc); // 向前5mm
                 HAL_Delay(2000);
             }
         }
@@ -152,7 +152,7 @@ void Command_Control(void)
             }
             if (j < 1)
             {
-                Motor_Set(2, 2, 0, 0x500, vstart, vmax, vacc); // 向前5mm
+                Motor_Set(2, 2, 1, 0x500, vstart, vmax, vacc); // 向前5mm
                 HAL_Delay(2000);
             }
         }
@@ -177,7 +177,7 @@ void Command_Control(void)
             }
             if (j < 1)
             {
-                Motor_Set(2, 2, 0, 0x400, vstart, vmax, vacc); // 向前5mm
+                Motor_Set(2, 2, 1, 0x400, vstart, vmax, vacc); // 向前5mm
                 HAL_Delay(2000);
             }
         }
@@ -202,7 +202,7 @@ void Command_Control(void)
             }
             if (j < 1)
             {
-                Motor_Set(2, 2, 0, 0x400, vstart, vmax, vacc); // 向前5mm
+                Motor_Set(2, 2, 1, 0x400, vstart, vmax, vacc); // 向前5mm
                 HAL_Delay(2000);
             }
         }
@@ -227,7 +227,7 @@ void Command_Control(void)
             }
             if (j < 1)
             {
-                Motor_Set(2, 2, 0, 0x400, vstart, vmax, vacc); // 向前5mm
+                Motor_Set(2, 2, 1, 0x400, vstart, vmax, vacc); // 向前5mm
                 HAL_Delay(2000);
             }
         }
@@ -252,7 +252,7 @@ void Command_Control(void)
             }
             if (j < 1)
             {
-                Motor_Set(2, 2, 0, 0x400, vstart, vmax, vacc); // 向前5mm
+                Motor_Set(2, 2, 1, 0x400, vstart, vmax, vacc); // 向前5mm
                 HAL_Delay(2000);
             }
         }
