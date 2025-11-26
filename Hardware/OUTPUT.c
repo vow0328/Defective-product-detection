@@ -11,6 +11,7 @@ void OUTPUT_init()
 {
     for (size_t i = 1; i <= OUTPUT_SENSOR_COUNT; i++)
     {
-        HAL_GPIO_WritePin(output_ports[i], output_pins[i], RESET);
+        HAL_GPIO_WritePin(output_ports[i], output_pins[i], SET);
     }
+     HAL_GPIO_WritePin(output_ports[1], output_pins[1], RESET);
 }
