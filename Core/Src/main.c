@@ -101,8 +101,10 @@ int main(void)
   /* USER CODE BEGIN 2 */
   OUTPUT_init();
   PVD_Config();
-  Scheduler_Setup(); // 初始化任务调度
-  HAL_Delay(10000);  // 网口模块需要10秒准备
+  fixed_math_init();     // 初始化定点数查表 (平方根/正弦)
+  torque_comp_init();    // 初始化力矩补偿默认参数
+  Scheduler_Setup();     // 初始化任务调度
+  HAL_Delay(10000);      // 网口模块需要10秒准备
   Serial_Init();
   /* USER CODE END 2 */
 
