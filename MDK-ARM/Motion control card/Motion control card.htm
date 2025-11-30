@@ -485,10 +485,10 @@ Global Symbols
 <P><STRONG><a name="[f6]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, indicate_semi.o(.text), UNUSED)
 
 <P><STRONG><a name="[6c]"></a>Control</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, control.o(i.Control))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = Control &rArr; Motor_SetSpeed &rArr; Motor3_SetSpeed
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = Control &rArr; Motor_Set &rArr; Motor3_SetSpeed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial3_GetRxPacket
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_SetSpeed
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Set
 </UL>
 <BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_100Hz
 </UL>
@@ -1054,7 +1054,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PeriodElapsedCallback
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_SetSpeed
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Set
 </UL>
 
 <P><STRONG><a name="[9c]"></a>Motor2_SetSpeed</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, h_tmc2209.o(i.Motor2_SetSpeed))
@@ -1063,7 +1063,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PeriodElapsedCallback
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_SetSpeed
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Set
 </UL>
 
 <P><STRONG><a name="[9d]"></a>Motor3_SetSpeed</STRONG> (Thumb, 62 bytes, Stack size 24 bytes, h_tmc2209.o(i.Motor3_SetSpeed))
@@ -1072,7 +1072,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PeriodElapsedCallback
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_SetSpeed
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Set
 </UL>
 
 <P><STRONG><a name="[bd]"></a>Motor_Init</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, h_tmc2209.o(i.Motor_Init))
@@ -1084,8 +1084,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6e]"></a>Motor_SetSpeed</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, h_tmc2209.o(i.Motor_SetSpeed))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Motor_SetSpeed &rArr; Motor3_SetSpeed
+<P><STRONG><a name="[6e]"></a>Motor_Set</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, h_tmc2209.o(i.Motor_Set))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Motor_Set &rArr; Motor3_SetSpeed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor3_SetSpeed
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor2_SetSpeed
@@ -1391,7 +1391,7 @@ Local Symbols
 <BR>[Address Reference Count : 1]<UL><LI> scheduler.o(.data)
 </UL>
 <P><STRONG><a name="[55]"></a>Loop_100Hz</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, scheduler.o(i.Loop_100Hz))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = Loop_100Hz &rArr; Control &rArr; Motor_SetSpeed &rArr; Motor3_SetSpeed
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = Loop_100Hz &rArr; Control &rArr; Motor_Set &rArr; Motor3_SetSpeed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Control
 </UL>

@@ -97,29 +97,39 @@ int main(void)
   MX_USART3_UART_Init();
   MX_TIM3_Init();
   MX_TIM5_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-  HAL_Delay(500);
+  OUTPUT_init();
+  PVD_Config();
+  fixed_math_init();     // 初始化定点数查表 (平方根/正弦)
+  torque_comp_init();    // 初始化力矩补偿默认参数
+  Scheduler_Setup();     // 初始化任务调度
+  HAL_Delay(10000);      // 网口模块需要10秒准备
   Serial_Init();
-  Motor_Init();
-  led_init();
-  // OLED_Init();
-  Scheduler_Setup();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
+  // Motor_Set(1, 2, 1, 3200, 800, 3200, 2400);
+  // Motor_Set(2, 2, 1, 1600, 200, 3200, 100);
+  // Motor_Set(3, 2, 1, 1600, 200, 3200, 100);
+  // Motor_Set(4, 2, 1, 1600, 200, 3200, 100);
+  // Motor_Set(5, 2, 1, 1600, 200, 3200, 100);
+  // Motor_Set(6, 2, 1, 1600, 200, 3200, 100);
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    // Motor_SetSpeed(3,2,1,1600);
-    // HAL_Delay(3000);
-    // Motor1_SetSpeed(1, 1, 1600);
-    // Motor2_SetSpeed(1, 1, 1600);
-    // Motor3_SetSpeed(1, 1, 1600);
-    Scheduler_Run();
+
+    // HAL_Delay(8000);
+    // for (int i = 0; i < 8; i++)
+    //   OUTPUT_control(i + 1, 1);
+    // HAL_Delay(500);
+    // for (int i = 0; i < 8; i++)
+    //   OUTPUT_control(i+1, 0);
+    // HAL_Delay(500);
+    Scheduler_Run(); // 任务调度
   }
   /* USER CODE END 3 */
 }
@@ -180,7 +190,6 @@ void Error_Handler(void)
   }
   /* USER CODE END Error_Handler_Debug */
 }
-
 #ifdef USE_FULL_ASSERT
 /**
  * @brief  Reports the name of the source file and the source line number
